@@ -6,9 +6,46 @@ class Car:
         self.length = length
         self.dir = direction
         self.is_red_car = is_red_car
+    def copy(self):
+        return Car(self.name, self.x, self.y, self.length, self.dir, self.is_red_car)
     
 class Board:
-    def __init__(self, cars_dict): ...
+    def __init__(self, cars_dict, size=6, exit_row=2, exit_col=4):
+        '''
+        Khởi tạo Board từ:
+        - dict dạng thường: {'A': {'x':..., 'y':..., ...}}
+        - hoặc dict dạng object: {'A': Car(...)}
+        '''
+        self.size = size
+        self.exit_row = exit_row
+        self.exit_col = exit_col
+        self.cars = {}
+        for name, data in cars_dict.items():
+            if isinstance(data, Car):
+                self.cars[name] = data
+            elif isinstance(data, dict):
+                self.cars[name] = Car(name, **data)
+            else:
+                raise TypeError(f"Invalid car data for '{name}': {data}")
+    def copy(self):
+        new_cars = {name: car.copy() for name, car in self.cars.items()}
+        return Board(new_cars)
+    def __is_car_at(self, x, y):
+        '''
+        Trả về True nếu tại ô (x, y) có xe nào chiếm.
+        '''
+        for car in self.cars.values():
+            for i in range(car.length):
+                if car.dir == 'H':
+                    cx = car.x + i
+                    cy = car.y
+                else:  # 'V'
+                    cx = car.x
+                    cy = car.y + i
+                if cx == x and cy == y:
+                    return True
+        return False
+
     def can_move(self, car_name, steps):
         '''
         Kiểm tra xem xe có thể di chuyển một số bước nhất định mà không va chạm.
@@ -20,6 +57,31 @@ class Board:
         Return:
         - bool: True nếu hợp lệ, False nếu bị cản hoặc vượt khỏi lưới.
         '''
+        if steps == 0:
+            return True
+
+        car = self.cars[car_name]
+        dx, dy = 0, 0
+        if car.dir == 'H':
+            dx = 1 if steps > 0 else -1
+        else:
+            dy = 1 if steps > 0 else -1
+
+        for step in range(1, abs(steps) + 1):
+            if steps > 0:
+                check_x = car.x + dx * (car.length - 1 + step)
+                check_y = car.y + dy * (car.length - 1 + step)
+            else:
+                check_x = car.x + dx * -step
+                check_y = car.y + dy * -step
+
+            if not (0 <= check_x < self.size and 0 <= check_y < self.size):
+                return False
+            if self.__is_car_at(check_x, check_y):
+                return False
+        return True
+        
+
     def move(self, car_name, steps):
         '''
         Thực hiện di chuyển xe (khi hợp lệ).
@@ -30,6 +92,12 @@ class Board:
 
         Return: None (cập nhật vị trí xe trực tiếp)
         '''
+        car = self.cars[car_name]
+        if self.can_move(car_name, steps):
+            if car.dir == 'H':
+                car.x += steps
+            else:
+                car.y += steps
     def generate_next_states(self):
         '''
         Sinh ra tất cả trạng thái hợp lệ kế tiếp từ trạng thái hiện tại.
@@ -38,7 +106,32 @@ class Board:
         Return:
         - list[Board]: danh sách các Board mới sau từng nước đi hợp lệ.
         '''
+        states_list = []
 
+        for car_name, _ in self.cars.items():
+            for step in range(1, self.size):
+                if not self.can_move(car_name, step):
+                    break
+                new_board = self.copy()
+                new_car = new_board.cars[car_name]
+                if new_car.dir == 'H':
+                    new_car.x += step
+                else:
+                    new_car.y += step
+                states_list.append(new_board)
+
+            for step in range(1, self.size):
+                if not self.can_move(car_name, -step):
+                    break
+                new_board = self.copy()
+                new_car = new_board.cars[car_name]
+                if new_car.dir == 'H':
+                    new_car.x -= step
+                else:
+                    new_car.y -= step
+                states_list.append(new_board)
+
+        return states_list
     def is_goal(self):
         '''Kiểm tra trạng thái hiện tại có phải là trạng thái thắng (xe R tới biên phải).
 
@@ -47,6 +140,10 @@ class Board:
         Return:
         - bool: True nếu thắng, False nếu chưa.
         '''
+        for car in self.cars.values():
+            if car.is_red_car and car.x == self.exit_col and car.y == self.exit_row:
+                return True
+        return False
     def to_matrix(self):
         '''
         Chuyển trạng thái board hiện tại thành ma trận 2D 6x6.
@@ -56,6 +153,15 @@ class Board:
         Return:
         - list[list[str]]: ma trận 6x6, mỗi ô là '.', hoặc ký hiệu xe.
         '''
+        mat = [['.' for _ in range(self.size)] for _ in range(self.size)]
+        for name, car in self.cars.items():
+            x, y, l, d = car.x, car.y, car.length, car.dir
+            for i in range(l):
+                if d == 'H':
+                    mat[x][y + i] = name
+                else:
+                    mat[x + i][y] = name
+        return mat
     def print(self): ...
     def __hash__(self): ...
     def __eq__(self, other): ...

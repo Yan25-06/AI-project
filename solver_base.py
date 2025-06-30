@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-
 class Node:
     def __init__(self, board, moves, previous):
         self.board = board
@@ -29,7 +28,7 @@ class Solver(ABC):
     def get_moves(self):
         return self.moves
 
-    def __reconstruct_path(self, node):
+    def _reconstruct_path(self, node):
         path = []
         while node:
             path.append(node.board)
