@@ -24,6 +24,7 @@ class Board:
             if isinstance(data, Car):
                 self.cars[name] = data
             elif isinstance(data, dict):
+                print(f"Creating car '{name}' with data: {data}")
                 self.cars[name] = Car(name, **data)
             else:
                 raise TypeError(f"Invalid car data for '{name}': {data}")

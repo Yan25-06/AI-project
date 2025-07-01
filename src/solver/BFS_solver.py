@@ -1,4 +1,4 @@
-from solver_base import Solver, Node
+from .solver_base import Solver, Node
 
 class BFSSolver(Solver):
     def solve(self): ...

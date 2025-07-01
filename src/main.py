@@ -1,5 +1,5 @@
-from src.game.game import Board
-from solver.BFS_solver import BFSSolver
+from .game.game import Board
+from .solver.BFS_solver import BFSSolver
 
 def main():
     cars = {
@@ -10,6 +10,10 @@ def main():
     }
 
     board = Board(cars)
+    ma = board.to_matrix() 
+    print(ma)
+
+    return 
 
     solver = BFSSolver(board)
     solver.solve()
@@ -20,3 +24,6 @@ def main():
         step.print()
         print('---')
 
+
+if __name__ == "__main__":
+    main()
