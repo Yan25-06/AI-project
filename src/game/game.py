@@ -24,7 +24,6 @@ class Board:
             if isinstance(data, Car):
                 self.cars[name] = data
             elif isinstance(data, dict):
-                print(f"Creating car '{name}' with data: {data}")
                 self.cars[name] = Car(name, **data)
             else:
                 raise TypeError(f"Invalid car data for '{name}': {data}")
@@ -99,7 +98,7 @@ class Board:
             car.x += steps
         else:
             car.y += steps
-    def generate_next_states(self):
+    def generate_next_states(self)->list['Board']:
         '''
         Sinh ra tất cả trạng thái hợp lệ kế tiếp từ trạng thái hiện tại.
         Parameters: None

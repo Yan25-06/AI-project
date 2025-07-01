@@ -1,5 +1,5 @@
 from .game.game import Board
-from .solver.BFS_solver import BFSSolver
+from .helper.solver_factory import initialize_solver
 
 def main():
     cars = {
@@ -9,19 +9,22 @@ def main():
         'C': {'x': 3, 'y': 1, 'length': 3, 'dir': 'H'},
     }
 
-    board = Board(cars)
+    board = Board(cars) 
+    print("Initial board:")
     board.print()
 
-    return 
-
-    solver = BFSSolver(board)
-    solver.solve()
+    solver = initialize_solver("UCS",board) 
+    res = solver.solve() 
 
     print(f"Number of moves: {solver.get_moves()}")
-    print("Solution:")
-    for step in solver.get_solution():
-        step.print()
-        print('---')
+    if res is None:
+        print("No solution found.")
+    else: 
+        print("Solution:")
+        for step in solver.get_solution():
+            step.print()
+            print('---')
+
 
 
 if __name__ == "__main__":
