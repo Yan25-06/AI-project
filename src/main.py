@@ -6,12 +6,11 @@ def main():
         'R': {'x': 2, 'y': 0, 'length': 2, 'dir': 'H'},
         'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
         'B': {'x': 1, 'y': 3, 'length': 2, 'dir': 'V'},
-        'C': {'x': 4, 'y': 0, 'length': 3, 'dir': 'H'},
+        'C': {'x': 3, 'y': 1, 'length': 3, 'dir': 'H'},
     }
 
     board = Board(cars)
-    ma = board.to_matrix() 
-    print(ma)
+    board.print()
 
     return 
 

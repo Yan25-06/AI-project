@@ -1,10 +1,10 @@
 class Car:
-    def __init__(self, name, x, y, length, direction):
+    def __init__(self, name, x, y, length, dir):
         self.name = name
         self.x = x
         self.y = y
         self.length = length
-        self.dir = direction
+        self.dir = dir
         self.is_red_car = True if name == 'R' else False
     def copy(self):
         return Car(self.name, self.x, self.y, self.length, self.dir)
