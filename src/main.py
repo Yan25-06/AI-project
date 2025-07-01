@@ -3,7 +3,7 @@ from .helper.solver_factory import initialize_solver
 
 def main():
     cars = {
-        'R': {'x': 2, 'y': 0, 'length': 2, 'dir': 'H'},
+        'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
         'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
         'B': {'x': 1, 'y': 3, 'length': 2, 'dir': 'V'},
         'C': {'x': 3, 'y': 1, 'length': 3, 'dir': 'H'},
