@@ -1,4 +1,4 @@
-from solver_base import Solver, Node
+from .solver_base import Solver, Node
 import heapq
 class AstarSolver(Solver):
     def _calc_up_down_block_car(self, target_car, board):

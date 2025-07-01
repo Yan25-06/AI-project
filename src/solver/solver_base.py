@@ -1,6 +1,10 @@
 from abc import ABC, abstractmethod
-class Node:
-    def __init__(self, board, moves, previous):
+from ..game.game import Board
+
+Solution = list[Board]
+
+class Node: 
+    def __init__(self, board: Board, moves:int, previous):
         self.board = board
         self.moves = moves
         self.previous = previous
@@ -9,10 +13,13 @@ class Node:
     def __lt__(self, other):
         return self.priority < other.priority
 
+    def __gt__(self, other):
+        return self.priority > other.priority
+
 class Solver(ABC):
-    def __init__(self, initial_board):
+    def __init__(self, initial_board: Board):
         self.initial_board = initial_board
-        self.solution = []
+        self.solution:Solution = []
         self.moves = -1
 
     @abstractmethod

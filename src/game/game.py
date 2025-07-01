@@ -1,13 +1,13 @@
 class Car:
-    def __init__(self, name, x, y, length, direction, is_red_car=None):
+    def __init__(self, name, x, y, length, dir):
         self.name = name
         self.x = x
         self.y = y
         self.length = length
-        self.dir = direction
-        self.is_red_car = is_red_car
+        self.dir = dir
+        self.is_red_car = True if name == 'R' else False
     def copy(self):
-        return Car(self.name, self.x, self.y, self.length, self.dir, self.is_red_car)
+        return Car(self.name, self.x, self.y, self.length, self.dir)
     
 class Board:
     def __init__(self, cars_dict, size=6, exit_row=2, exit_col=4):
@@ -57,28 +57,27 @@ class Board:
         Return:
         - bool: True nếu hợp lệ, False nếu bị cản hoặc vượt khỏi lưới.
         '''
-        if steps == 0:
-            return True
+        if abs(steps) > 1:
+            raise ValueError("steps = ±1")
 
         car = self.cars[car_name]
         dx, dy = 0, 0
         if car.dir == 'H':
-            dx = 1 if steps > 0 else -1
+            dx = steps
         else:
-            dy = 1 if steps > 0 else -1
+            dy = steps
 
-        for step in range(1, abs(steps) + 1):
-            if steps > 0:
-                check_x = car.x + dx * (car.length - 1 + step)
-                check_y = car.y + dy * (car.length - 1 + step)
-            else:
-                check_x = car.x + dx * -step
-                check_y = car.y + dy * -step
+        if steps > 0:
+            check_x = car.x + dx * car.length
+            check_y = car.y + dy * car.length
+        else:
+            check_x = car.x + dx
+            check_y = car.y + dy
 
-            if not (0 <= check_x < self.size and 0 <= check_y < self.size):
-                return False
-            if self.__is_car_at(check_x, check_y):
-                return False
+        if not (0 <= check_x < self.size and 0 <= check_y < self.size):
+            return False
+        if self.__is_car_at(check_x, check_y):
+            return False
         return True
         
 
@@ -92,13 +91,14 @@ class Board:
 
         Return: None (cập nhật vị trí xe trực tiếp)
         '''
+        if abs(steps) > 1:
+            raise ValueError("steps = ±1")
         car = self.cars[car_name]
-        if self.can_move(car_name, steps):
-            if car.dir == 'H':
-                car.x += steps
-            else:
-                car.y += steps
-    def generate_next_states(self):
+        if car.dir == 'H':
+            car.x += steps
+        else:
+            car.y += steps
+    def generate_next_states(self)->list['Board']:
         '''
         Sinh ra tất cả trạng thái hợp lệ kế tiếp từ trạng thái hiện tại.
         Parameters: None
@@ -108,30 +108,17 @@ class Board:
         '''
         states_list = []
 
-        for car_name, _ in self.cars.items():
-            for step in range(1, self.size):
-                if not self.can_move(car_name, step):
-                    break
-                new_board = self.copy()
-                new_car = new_board.cars[car_name]
-                if new_car.dir == 'H':
-                    new_car.x += step
-                else:
-                    new_car.y += step
-                states_list.append(new_board)
-
-            for step in range(1, self.size):
-                if not self.can_move(car_name, -step):
-                    break
-                new_board = self.copy()
-                new_car = new_board.cars[car_name]
-                if new_car.dir == 'H':
-                    new_car.x -= step
-                else:
-                    new_car.y -= step
-                states_list.append(new_board)
-
+        for car_name in self.cars:
+            for step in [-1, 1]:
+                if self.can_move(car_name, step):
+                    new_board = self.copy()
+                    new_board.move(car_name, step) 
+                    states_list.append(new_board)
         return states_list
+    def get_red_car(self):
+        for car in self.cars.values():
+            if car.is_red_car:
+                return car
     def is_goal(self):
         '''Kiểm tra trạng thái hiện tại có phải là trạng thái thắng (xe R tới biên phải).
 
@@ -140,9 +127,9 @@ class Board:
         Return:
         - bool: True nếu thắng, False nếu chưa.
         '''
-        for car in self.cars.values():
-            if car.is_red_car and car.x == self.exit_col and car.y == self.exit_row:
-                return True
+        car = self.get_red_car()
+        if car.x == self.exit_col and car.y == self.exit_row:
+            return True
         return False
     def to_matrix(self):
         '''
@@ -158,11 +145,14 @@ class Board:
             x, y, l, d = car.x, car.y, car.length, car.dir
             for i in range(l):
                 if d == 'H':
-                    mat[x][y + i] = name
+                    mat[y][x + i] = name
                 else:
-                    mat[x + i][y] = name
+                    mat[y + i][x] = name
         return mat
-    def print(self): ...
+    def print(self):
+        mat = self.to_matrix()
+        for row in mat:
+            print(" ".join(row))
     def __hash__(self): ...
     def __eq__(self, other): ...
     
