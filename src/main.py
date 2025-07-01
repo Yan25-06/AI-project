@@ -1,5 +1,5 @@
-from game import Board
-from BFS_solver import BFSSolver
+from src.game.game import Board
+from solver.BFS_solver import BFSSolver
 
 def main():
     cars = {
