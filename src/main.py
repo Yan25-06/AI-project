@@ -1,18 +1,16 @@
-from .game.game import Board
+from .game.game import Board, Car
 from .solver.BFS_solver import BFSSolver
 
 def main():
     cars = {
-        'R': {'x': 2, 'y': 0, 'length': 2, 'dir': 'H'},
-        'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
-        'B': {'x': 1, 'y': 3, 'length': 2, 'dir': 'V'},
-        'C': {'x': 3, 'y': 1, 'length': 3, 'dir': 'H'},
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
+    'B': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
+    'C': {'x': 3, 'y': 1, 'length': 3, 'dir': 'H'},
+    'D': {'x': 1, 'y': 4, 'length': 3, 'dir': 'H'},
     }
-
     board = Board(cars)
     board.print()
-
-    return 
 
     solver = BFSSolver(board)
     solver.solve()
