@@ -10,9 +10,6 @@ class DFSSolver(Solver):
         return super()._reconstruct_path(node)
 
     def solve(self): 
-    # if is_goal
-    #   self.solution = _reconstruct_path 
-    #   ...
         # Initialize stack with the initial board state
         stack = [Node(self.initial_board, 0, None)] 
         visited = set()

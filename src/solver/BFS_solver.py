@@ -11,9 +11,6 @@ class BFSSolver(Solver):
         return super()._reconstruct_path(node)
 
     def solve(self): 
-    # if is_goal
-    #   self.solution = _reconstruct_path 
-    #   ...
         # Initialize queue with the initial board state
         # Note: BFS uses a queue, so we use deque for efficient pop from the left
         queue = deque([Node(self.initial_board, 0, None)])
