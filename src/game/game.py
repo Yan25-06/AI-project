@@ -108,8 +108,11 @@ class Board:
         '''
         states_list = []
 
-        for car_name in self.cars:
-            for step in [-1, 1]:
+        # Try red car first for faster goal reaching
+        car_order = ['R'] + [name for name in self.cars if name != 'R']
+        
+        for car_name in car_order:
+            for step in [1, -1]:  # Try forward first, then backward
                 if self.can_move(car_name, step):
                     new_board = self.copy()
                     new_board.move(car_name, step) 
@@ -153,6 +156,29 @@ class Board:
         mat = self.to_matrix()
         for row in mat:
             print(" ".join(row))
-    def __hash__(self): ...
-    def __eq__(self, other): ...
+    def __hash__(self):
+        '''
+        Hàm băm để sử dụng trong set hoặc dict.
+        Trả về giá trị băm duy nhất cho trạng thái board hiện tại.
+        '''
+        return hash(tuple(sorted((car.name, car.x, car.y, car.length, car.dir) for car in self.cars.values())))
     
+    def __eq__(self, other):
+        '''
+        So sánh hai Board có bằng nhau không.
+        Hai board bằng nhau nếu tất cả xe có vị trí và thuộc tính giống nhau.
+        '''
+        if not isinstance(other, Board):
+            return False
+        if self.size != other.size or self.exit_row != other.exit_row or self.exit_col != other.exit_col:
+            return False
+        if len(self.cars) != len(other.cars):
+            return False
+        for name, car in self.cars.items():
+            if name not in other.cars:
+                return False
+            other_car = other.cars[name]
+            if (car.x != other_car.x or car.y != other_car.y or 
+                car.length != other_car.length or car.dir != other_car.dir):
+                return False
+        return True
