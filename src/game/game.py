@@ -153,6 +153,17 @@ class Board:
         mat = self.to_matrix()
         for row in mat:
             print(" ".join(row))
-    def __hash__(self): ...
-    def __eq__(self, other): ...
+    def __eq__(self, other):
+        if not isinstance(other, Board):
+            return False
+        return sorted(
+            (name, car.x, car.y, car.length)
+            for name, car in self.cars.items()
+        ) == sorted(
+            (name, car.x, car.y, car.length)
+            for name, car in other.cars.items()
+        )
+
+    def __hash__(self):
+        return hash(tuple(sorted((name, car.x, car.y, car.length) for name, car in self.cars.items())))
     

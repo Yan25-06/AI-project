@@ -1,0 +1,240 @@
+1
+cars = {
+    'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'B': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+}
+Initial board:
+. . . . . .
+. . . . . .
+. . R R A .
+. . . . A .
+. . . . B B
+. . . . . .
+Number of moves: 4
+
+2
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
+    'B': {'x': 2, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 3, 'y': 1, 'length': 3, 'dir': 'H'},
+    'D': {'x': 3, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+A A . . . .
+. . . C C C
+R R . . . .
+. . B . . .
+. . B D D D
+. . . . . .
+Number of moves: 4
+
+3
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
+    'B': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
+    'C': {'x': 2, 'y': 1, 'length': 3, 'dir': 'H'},
+    'D': {'x': 1, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+A A . . . .
+. . C C C .
+R R B . . .
+. . B . . .
+. D D D . .
+. . . . . .
+Number of moves: 7
+
+4
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+    'B': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+    'C': {'x': 2, 'y': 0, 'length': 3, 'dir': 'H'},
+    'D': {'x': 2, 'y': 4, 'length': 2, 'dir': 'H'},
+    'E': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+}
+Initial board:
+. . C C C A
+. . B . . A
+R R B . . A
+. . . . . .
+. . D D E E
+. . . . . .
+Number of moves: 11
+
+5
+cars = {
+    'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 0, 'length': 3, 'dir': 'V'},
+    'B': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+}
+Initial board:
+. . . . A .
+. . . . A .
+. . R R A .
+. . . B . .
+. . . B C C
+. . . . . .
+Number of moves: 12
+
+6
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 0, 'y': 4, 'length': 2, 'dir': 'V'},
+    'E': {'x': 3, 'y': 0, 'length': 2, 'dir': 'V'},
+    'F': {'x': 3, 'y': 2, 'length': 2, 'dir': 'V'},
+    'G': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'H': {'x': 4, 'y': 4, 'length': 2, 'dir': 'V'},
+    'B': {'x': 4, 'y': 0, 'length': 2, 'dir': 'H'},
+    'C': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
+    'D': {'x': 1, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+. . . E B B
+. . . E . C
+R R . F G C
+. . . F G C
+A D D D H .
+A . . . H .
+Number of moves: 17
+
+7
+cars = {
+    'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'E': {'x': 4, 'y': 0, 'length': 2, 'dir': 'V'},
+    'F': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
+    'H': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
+    'B': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'C': {'x': 2, 'y': 3, 'length': 3, 'dir': 'V'},
+    'D': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+}
+Initial board:
+. . . . E D
+. . H H E D
+. . R R A D
+. . C . A .
+. . C F B B
+. . C F . .
+Number of moves: 23
+
+8
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 3, 'length': 3, 'dir': 'V'},
+    'B': {'x': 2, 'y': 0, 'length': 3, 'dir': 'V'},
+    'C': {'x': 0, 'y': 4, 'length': 2, 'dir': 'V'},
+    'D': {'x': 1, 'y': 4, 'length': 2, 'dir': 'H'},
+}
+Initial board:
+. . B . . .
+. . B . . .
+R R B . . .
+. . . . A .
+C D D . A .
+C . . . A .
+Number of moves: 26
+
+9
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 1, 'y': 0, 'length': 2, 'dir': 'H'},
+    'B': {'x': 3, 'y': 0, 'length': 2, 'dir': 'H'},
+    'C': {'x': 0, 'y': 0, 'length': 2, 'dir': 'V'},
+    'D': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+    'F': {'x': 3, 'y': 2, 'length': 3, 'dir': 'V'},
+    'G': {'x': 4, 'y': 2, 'length': 3, 'dir': 'V'},
+    'H': {'x': 0, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+C A A B B .
+C . D . . .
+R R D F G .
+. . . F G .
+H H H F G .
+. . . . . .
+Expanded nodes:
+tim thay path
+Number of moves: 28
+
+10
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 5, 'y': 1, 'length': 2, 'dir': 'V'},
+    'B': {'x': 2, 'y': 4, 'length': 2, 'dir': 'H'},
+    'C': {'x': 1, 'y': 4, 'length': 2, 'dir': 'V'},
+    'D': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
+    'E': {'x': 2, 'y': 5, 'length': 2, 'dir': 'H'},
+    'F': {'x': 3, 'y': 1, 'length': 3, 'dir': 'V'},
+    'G': {'x': 4, 'y': 1, 'length': 3, 'dir': 'V'},
+}
+Initial board:
+. . . . . .
+. . . F G A
+R R . F G A
+D D . F G .
+. C B B . .
+. C E E . .
+Number of moves: 38
+
+11
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+    'B': {'x': 2, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 1, 'y': 4, 'length': 2, 'dir': 'V'},
+    'D': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
+    'E': {'x': 2, 'y': 5, 'length': 2, 'dir': 'H'},
+    'F': {'x': 3, 'y': 1, 'length': 3, 'dir': 'V'},
+    'G': {'x': 4, 'y': 1, 'length': 3, 'dir': 'V'},
+}
+Initial board:
+. . . . . .
+. . A F G .
+R R A F G .
+D D B F G .
+. C B . . .
+. C E E . .
+Number of moves: 39
+
+12
+cars = {
+    'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 0, 'length': 3, 'dir': 'V'},
+    'B': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'D': {'x': 0, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+. . . . A .
+. . . . A .
+. . R R A .
+. . . B . .
+D D D B C C
+. . . . . .
+Number of moves: No solution found
+
+13
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'E': {'x': 4, 'y': 0, 'length': 2, 'dir': 'V'},
+    'F': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
+    'H': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
+    'G': {'x': 0, 'y': 4, 'length': 2, 'dir': 'H'},
+    'B': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'C': {'x': 2, 'y': 3, 'length': 3, 'dir': 'V'},
+    'D': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+}
+Initial board:
+. . . . E D
+. . H H E D
+R R . . A D
+. . C . A .
+G G C F B B
+. . C F . .
+Number of moves: No solution found
