@@ -43,23 +43,24 @@ class AstarSolver(Solver):
         return heuristics_val
     
     def solve(self): 
-        expanded_nodes = 0
+        self.expanded_nodes = 0
         open_set = []
         visited = set()
         init_state = Node(self.initial_board, self.moves, None, self.heuristic(self.initial_board))
         heapq.heappush(open_set, init_state)
+        visited.add(init_state)
         while open_set:
             current = heapq.heappop(open_set)
-            visited.add(current.board)
-            expanded_nodes += 1
+            self.expanded_nodes += 1
             if current.board.is_goal():
                 self.solution = self._reconstruct_path(current)
-                self.moves = current.moves
-                print("tim thay path")
-                return expanded_nodes
+                self.moves = len(self.solution) - 1
+                return 
             next_states = current.board.generate_next_states()
             for board in next_states:
                 if board in visited:
                     continue
-                heapq.heappush(open_set, Node(board, current.moves + 1, current, current.moves + 1 + self.heuristic(board)))
-        return None
+                visited.add(board)
+                g = current.moves + self.get_move_cost(current.board, board)
+                heapq.heappush(open_set, Node(board, g, current, g + self.heuristic(board)))
+        return
