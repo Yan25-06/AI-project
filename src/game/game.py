@@ -108,8 +108,11 @@ class Board:
         '''
         states_list = []
 
-        for car_name in self.cars:
-            for step in [-1, 1]:
+        # Try red car first for faster goal reaching
+        car_order = ['R'] + [name for name in self.cars if name != 'R']
+        
+        for car_name in car_order:
+            for step in [1, -1]:  # Try forward first, then backward
                 if self.can_move(car_name, step):
                     new_board = self.copy()
                     new_board.move(car_name, step) 
