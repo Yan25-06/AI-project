@@ -4,11 +4,11 @@ from ..game.game import Board
 Solution = list[Board]
 
 class Node: 
-    def __init__(self, board: Board, moves:int, previous, priority):
+    def __init__(self, board: Board, moves:int, previous):
         self.board = board
         self.moves = moves
         self.previous = previous
-        self.priority = priority  # cho A*, UCS (có thể tùy chỉnh sau)
+        self.priority = 0# cho A*, UCS (có thể tùy chỉnh sau)
 
     def __lt__(self, other):
         return self.priority < other.priority
@@ -22,6 +22,7 @@ class Solver(ABC):
         self.solution:Solution = []
         self.moves = -1
         self.expanded_nodes = -1
+        
 
     @abstractmethod
     def solve(self):

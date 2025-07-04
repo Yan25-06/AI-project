@@ -146,4 +146,4 @@ def test(solver_name):
         writer.writerows(results)
 
 
-test("Astar")
+test("DFS")

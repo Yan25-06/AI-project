@@ -13,6 +13,8 @@ class DFSSolver(Solver):
         # Initialize stack with the initial board state
         stack = [Node(self.initial_board, 0, None)] 
         visited = set()
+        visited.add(self.initial_board)  # Add the initial state to visited
+        expanded_node = 0
         while stack:
             current_node = stack.pop()
             current_state = current_node.board
@@ -20,11 +22,13 @@ class DFSSolver(Solver):
             if current_state.is_goal():
                 self.solution = self._reconstruct_path(current_node)
                 self.moves = current_node.moves
+                self.expanded_nodes = expanded_node
                 return
             # Check all the not visited states put it in the stack
             next_states = current_state.generate_next_states()
             for next_state in next_states:
                 if next_state not in visited:
+                    expanded_node += 1
                     visited.add(next_state)
                     next_node = Node(next_state, current_node.moves + 1, current_node)
                     stack.append(next_node)
