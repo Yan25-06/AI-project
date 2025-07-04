@@ -1,5 +1,6 @@
 from .solver_base import Solver, Node
-import heapq
+from ..game.game import Board
+from heapdict import heapdict
 class AstarSolver(Solver):
     def _calc_up_down_block_car(self, target_car, board):
         up, down = 0, 0
@@ -43,24 +44,41 @@ class AstarSolver(Solver):
         return heuristics_val
     
     def solve(self): 
+        open_set = heapdict()
+        visited: dict[Board,int] = {}
+        f_score: dict[Board,int] = {}
+        board_to_Node: dict[Board, Node] = {}
+
         self.expanded_nodes = 0
-        open_set = []
-        visited = set()
-        init_state = Node(self.initial_board, self.moves, None, self.heuristic(self.initial_board))
-        heapq.heappush(open_set, init_state)
-        visited.add(init_state)
+        init_state = Node(self.initial_board, self.moves, None)
+        init_state.priority = self.heuristic(self.initial_board)
+        open_set[self.initial_board] = init_state.priority
+        f_score[self.initial_board] = init_state.priority
+        board_to_Node[self.initial_board] = init_state
+        
         while open_set:
-            current = heapq.heappop(open_set)
+            current_board, curr_priority = open_set.popitem()
             self.expanded_nodes += 1
-            if current.board.is_goal():
-                self.solution = self._reconstruct_path(current)
+            curr_node = board_to_Node[current_board]
+            if current_board.is_goal():
+                self.solution = self._reconstruct_path(curr_node)
                 self.moves = len(self.solution) - 1
                 return 
-            next_states = current.board.generate_next_states()
+               
+            if current_board in visited:
+                continue
+            visited[current_board] = curr_priority
+            next_states = current_board.generate_next_states() 
+
             for board in next_states:
                 if board in visited:
                     continue
-                visited.add(board)
-                g = current.moves + self.get_move_cost(current.board, board)
-                heapq.heappush(open_set, Node(board, g, current, g + self.heuristic(board)))
+                g = curr_node.moves + self.get_move_cost(current_board, board)
+                f = g + self.heuristic(board)
+                if board not in f_score or f < f_score[board]:
+                    open_set[board] = f
+                    f_score[board] = f
+                    neighbor = Node(board, g, curr_node)
+                    neighbor.priority = f
+                    board_to_Node[board] = neighbor
         return
