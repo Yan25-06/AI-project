@@ -1,15 +1,18 @@
 import streamlit as st
-from state import steps
+import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+import matplotlib.image as mpimg
+from state import update_solution
 
 def display_title():
     st.markdown("<h1 style='text-align: center;'>🚗 Rush Hour Solver GUI</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center;'>Step-by-step solver</h3>", unsafe_allow_html=True)
 def display_selectbox():
-    c1, c2, c3 = st.columns([1, 2, 1])
+    c1, c2, c3, c4, c5 = st.columns([1, 2, 0.5, 2, 1])
     with c2:
-        algorithm = st.selectbox("Select Algorithm", ["A*", "UCS", "BFS", "DFS"], index=0)
+        st.selectbox("Select Algorithm", ["Astar", "UCS", "BFS", "DFS"], key="algorithm", on_change=update_solution, index=0)
+    with c4:
+        st.selectbox("Select Map", ["MAP_1", "MAP_2", "MAP_3", "MAP_4"], key="map", on_change=update_solution, index=0)
 def display_controls():
     st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 
@@ -17,21 +20,17 @@ def display_controls():
         if st.session_state.curr_step > 0:
             st.session_state.curr_step -= 1
             st.rerun()
-
-    if st.button("⏯️ Play", key="play", use_container_width=True):
+    elif st.button("⏯️ Play", key="play", use_container_width=True):
         st.session_state.is_playing = True
         st.rerun()
-
-    if st.button("⏸️ Pause", key="pause", use_container_width=True):
+    elif st.button("⏸️ Pause", key="pause", use_container_width=True):
         st.session_state.is_playing = False
         st.rerun()
-
-    if st.button("⏭️ Next Step", key="next", use_container_width=True):
+    elif st.button("⏭️ Next Step", key="next", use_container_width=True):
         if st.session_state.curr_step < len(st.session_state.steps) - 1:
             st.session_state.curr_step += 1
             st.rerun()
-    if st.button("🔄 Reset", key="reset", use_container_width=True):
-        st.session_state.steps = steps
+    elif st.button("🔄 Reset", key="reset", use_container_width=True):
         st.session_state.curr_step = 0
         st.session_state.is_playing = False
         st.rerun()
@@ -39,42 +38,50 @@ def display_controls():
     st.markdown("</div>", unsafe_allow_html=True)
 
 def display_metrics():
-    st.markdown(f"<h5 style='text-align:center;'>Step: {st.session_state.curr_step} / {len(st.session_state.steps)} </h5>", unsafe_allow_html=True)
+    st.markdown(f"<h5 style='text-align:center;'>Step: {st.session_state.curr_step} / {len(st.session_state.steps) - 1} </h5>", unsafe_allow_html=True)
     st.divider()
-    st.markdown(f"<h5 style='text-align:center;'>Total Cost: {len(st.session_state.steps)}</h5>", unsafe_allow_html=True)
+    st.markdown(f"<h5 style='text-align:center;'>Total Cost: {st.session_state.total_cost}</h5>", unsafe_allow_html=True)
     st.divider()
     st.markdown("<h5 style='text-align:center;'>Status</h5>", unsafe_allow_html=True)
     st.markdown(f"<h4 style='text-align:center;'>{'▶️ Playing' if st.session_state.is_playing else '⏸️ Paused'}</h2>", unsafe_allow_html=True)
-def draw_map(grid):
+def draw_map(board):
     col1, col2, col3 = st.columns([1, 2, 1])
-    with col1:
-        st.write("")
     with col2:
-        fig, ax = plt.subplots(figsize=(6, 6))
-        ax.set_xlim(0, 6)
-        ax.set_ylim(0, 6)
+        size = board.size
+        if "fig" not in st.session_state or "ax" not in st.session_state:
+            fig, ax = plt.subplots(figsize=(size, size))
+            st.session_state.fig = fig
+            st.session_state.ax = ax
+        else:
+            fig = st.session_state.fig
+            ax = st.session_state.ax
+            ax.clear()
+        ax.set_xlim(0, size)
+        ax.set_ylim(size, 0)
         ax.set_aspect('equal')
         ax.axis('off')
-        color_map = {
-            '.': '#CCCCCC',    # đường xám
-            'R': '#FF4C4C',    # xe đỏ (xe chính)
-            'O': '#FF9900',    # xe cam
-            'Y': '#FFD700',    # xe vàng
-            'B': '#4DA6FF',    # xe xanh dương
-            'G': '#77DD77'    # xe xanh lá
-        }
 
-        # Vẽ lưới và các xe
-        for i in range(6):
-            for j in range(6):
-                value = grid[i][j]
-                color = color_map.get(value, 'white')
-                rect = patches.Rectangle((j, 5 - i), 1, 1, linewidth=1, edgecolor='none', facecolor=color)
-                ax.add_patch(rect)
-                if value != '.':
-                    ax.text(j + 0.5, 5 - i + 0.5, '', color='black', weight='bold',
-                            ha='center', va='center', fontsize=16)
+        # Vẽ nền
+        for i in range(size):
+            for j in range(size):
+                ax.add_patch(plt.Rectangle((j, size - 1 - i), 1, 1, color="#575757", zorder=0))
+        # Vẽ xe
+        for name, car in board.cars.items():
+            x = car.x
+            y = car.y 
+            dx = car.length if car.dir == 'H' else 1
+            dy = car.length if car.dir == 'V' else 1
 
+            try:
+                if car.name == 'R':
+                    img_name = 'R'
+                else:
+                    img_name = car.length
+                img = mpimg.imread(f"src/assets/{img_name}.png")
+                if car.dir == 'H':
+                    img = np.rot90(img, k=3)
+                ax.imshow(img, extent=(x, x+dx, y, y+dy), zorder=1)
+            except FileNotFoundError:
+                ax.add_patch(plt.Rectangle((x, y), dx, dy, color="gray"))
+                ax.text(x + dx/2, y + dy/2, name, ha='center', va='center')
         st.pyplot(fig)
-    with col3:
-        st.write("")

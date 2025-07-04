@@ -1,6 +1,5 @@
 import streamlit as st
 from state import *
-import pandas as pd
 from config import PAGE_CONFIG
 from visualizer import *
 

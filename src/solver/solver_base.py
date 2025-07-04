@@ -8,7 +8,7 @@ class Node:
         self.board = board
         self.moves = moves
         self.previous = previous
-        self.priority = 0# cho A*, UCS (có thể tùy chỉnh sau)
+        self.priority = 0  # cho A*, UCS (có thể tùy chỉnh sau)
 
     def __lt__(self, other):
         return self.priority < other.priority
