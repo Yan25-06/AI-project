@@ -35,7 +35,12 @@ def init_session_state():
         st.error("❌ No solution found.")
         st.session_state.is_playing = False
         return
-
+def get_move_cost(current_state, next_state, prev=False):
+    for name, car in current_state.cars.items():
+        other_car = next_state.cars[name]
+        if (car.x, car.y) != (other_car.x, other_car.y):
+            return car.length if not prev else -car.length
+    return 0
 # cập nhật solution khi thay đổi lựa chọn selectbox
 def update_solution():
     st.session_state.update_sol = True
@@ -43,7 +48,10 @@ def update_solution():
 def update_current_step():
     if st.session_state.is_playing:
         if st.session_state.curr_step < len(st.session_state.steps) - 1:
+            curr_step = st.session_state.curr_step
             st.session_state.curr_step += 1
+            st.session_state.total_cost += get_move_cost(st.session_state.steps[curr_step - 1], st.session_state.steps[curr_step])
+            sleep(0.5)
             st.rerun()
         else:
             st.session_state.is_playing = False
