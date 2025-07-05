@@ -2,7 +2,7 @@ import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
-from state import update_solution, get_move_cost
+from state import update_solution
 
 def display_title():
     st.markdown("<h1 style='text-align: center;'>🚗 Rush Hour Solver GUI</h1>", unsafe_allow_html=True)
@@ -19,8 +19,6 @@ def display_controls():
     if st.button("⏮️ Previous", key="prev", use_container_width=True):
         if st.session_state.curr_step > 0:
             st.session_state.curr_step -= 1
-            curr_step = st.session_state.curr_step
-            st.session_state.total_cost += get_move_cost(st.session_state.steps[curr_step], st.session_state.steps[curr_step + 1], True)
             st.rerun()
     if st.button("⏯️ Play", key="play", use_container_width=True):
         st.session_state.is_playing = True
@@ -31,11 +29,10 @@ def display_controls():
     if st.button("⏭️ Next Step", key="next", use_container_width=True):
         if st.session_state.curr_step < len(st.session_state.steps) - 1:
             st.session_state.curr_step += 1
-            curr_step = st.session_state.curr_step
-            st.session_state.total_cost += get_move_cost(st.session_state.steps[curr_step - 1], st.session_state.steps[curr_step])
             st.rerun()
     if st.button("🔄 Reset", key="reset", use_container_width=True):
         st.session_state.curr_step = 0
+        st.session_state.total_cost = 0
         st.session_state.is_playing = False
         st.rerun()
 
@@ -52,14 +49,7 @@ def draw_map(board):
     col1, col2, col3 = st.columns([1, 6, 1])
     with col2:
         size = board.size
-        if "fig" not in st.session_state or "ax" not in st.session_state:
-            fig, ax = plt.subplots(figsize=(size + 4, size))
-            st.session_state.fig = fig
-            st.session_state.ax = ax
-        else:
-            fig = st.session_state.fig
-            ax = st.session_state.ax
-            ax.clear()
+        fig, ax = plt.subplots(figsize=(size + 4, size))
         ax.set_xlim(0, size + 4)
         ax.set_ylim(size, 0)
         ax.set_aspect('equal')
@@ -79,7 +69,7 @@ def draw_map(board):
                 if car.name == 'R':
                     img = mpimg.imread(f"src/GUI/assets/R.png")
                 else:
-                    img = mpimg.imread(f"src/GUI/assets/{car.length}2.png")
+                    img = mpimg.imread(f"src/GUI/assets/{car.length}3.png")
                 if car.dir == 'H':
                     img = np.rot90(img, k=3)
                 ax.imshow(img, extent=(x, x+dx, y, y+dy), zorder=1)
