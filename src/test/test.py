@@ -191,7 +191,7 @@ def print_test_cases(test_cases: list[dict]):
 
 tests = parse_test_cases("./src/test/jams.txt")
 # print_test_cases(tests)
-test("Astar", tests)
+test("BFS", tests)
 # solver_name = "Astar"
 # test_num = 0
 # sec, mem, solver = test_func(solver_name, test_cases[test_num])
