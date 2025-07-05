@@ -22,6 +22,7 @@ class Solver(ABC):
         self.solution:Solution = []
         self.moves = -1
         self.expanded_nodes = -1
+        
 
     @abstractmethod
     def solve(self):
