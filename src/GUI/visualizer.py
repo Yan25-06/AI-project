@@ -66,7 +66,7 @@ def draw_map(board):
         ax.axis('off')
 
         # Vẽ nền
-        bg_img = mpimg.imread(f"src/gui/assets/Background.png")
+        bg_img = mpimg.imread(f"src/GUI/assets/Background.png")
         ax.imshow(bg_img, extent=(0, size + 4, 0, size), zorder=0)
         # Vẽ xe
         for name, car in board.cars.items():
@@ -77,9 +77,9 @@ def draw_map(board):
 
             try:
                 if car.name == 'R':
-                    img = mpimg.imread(f"src/gui/assets/R.png")
+                    img = mpimg.imread(f"src/GUI/assets/R.png")
                 else:
-                    img = mpimg.imread(f"src/gui/assets/{car.length}2.png")
+                    img = mpimg.imread(f"src/GUI/assets/{car.length}2.png")
                 if car.dir == 'H':
                     img = np.rot90(img, k=3)
                 ax.imshow(img, extent=(x, x+dx, y, y+dy), zorder=1)
