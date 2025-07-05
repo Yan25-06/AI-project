@@ -18,17 +18,17 @@ class DFSSolver(Solver):
         while stack:
             current_node = stack.pop()
             current_state = current_node.board
-            # Check if the current state is goal
-            if current_state.is_goal():
-                self.solution = self._reconstruct_path(current_node)
-                self.moves = current_node.moves
-                self.expanded_nodes = expanded_node
-                return
+            expanded_node += 1
             # Check all the not visited states put it in the stack
             next_states = current_state.generate_next_states()
             for next_state in next_states:
                 if next_state not in visited:
-                    expanded_node += 1
+                    # Check if the current state is goal
+                    if current_state.is_goal():
+                        self.solution = self._reconstruct_path(current_node)
+                        self.moves = current_node.moves
+                        self.expanded_nodes = expanded_node
+                        return
                     visited.add(next_state)
                     next_node = Node(next_state, current_node.moves + 1, current_node)
                     stack.append(next_node)
