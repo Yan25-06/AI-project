@@ -28,7 +28,7 @@ class BFSSolver(Solver):
                 if next_state not in visited:
                     # Applies early goal check
                     # If the current state is the goal, reconstruct the path, get solution and return
-                    if current_state.is_goal():
+                    if next_state.is_goal():
                         self.solution = self._reconstruct_path(current_node)
                         self.moves = current_node.moves
                         self.expanded_nodes = expanded_nodes
