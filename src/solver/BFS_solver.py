@@ -30,7 +30,7 @@ class BFSSolver(Solver):
                     # If the current state is the goal, reconstruct the path, get solution and return
                     if next_state.is_goal():
                         self.solution = self._reconstruct_path(current_node)
-                        self.moves = current_node.moves
+                        self.moves = current_node.moves + 1
                         self.expanded_nodes = expanded_nodes
                         return
                     visited.add(next_state)

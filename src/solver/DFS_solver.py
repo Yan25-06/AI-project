@@ -26,7 +26,7 @@ class DFSSolver(Solver):
                     # Check if the current state is goal
                     if next_state.is_goal():
                         self.solution = self._reconstruct_path(current_node)
-                        self.moves = current_node.moves
+                        self.moves = current_node.moves + 1
                         self.expanded_nodes = expanded_node
                         return
                     visited.add(next_state)
