@@ -56,9 +56,10 @@ class UCSSolver(Solver):
 
 
             is_visited = curr_node in visited
-            is_visited_cheaper = visited.get(curr_node,float('inf')) < curr_node.priority
-            # skip if visited node is cheaper (better)
-            if is_visited and is_visited_cheaper:
+            is_visited_not_better = visited.get(curr_node,float('inf')) <= curr_node.priority
+            # skip if visited node is good enough (cheaper or equal cost)
+            # equal check avoid infinite loop 
+            if is_visited and is_visited_not_better:
                 continue
 
             # check goal
