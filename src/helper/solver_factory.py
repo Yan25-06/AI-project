@@ -1,11 +1,10 @@
 
 from typing import Literal
-
 from ..solver.solver_base import Solver
 from ..solver.BFS_solver import BFSSolver
 from ..solver.UCS_solver import UCSSolver
 from ..solver.DFS_solver import DFSSolver
-#from ..solver.Astar_solver import AstarSolver 
+from ..solver.Astar_solver import AstarSolver 
 from ..game.game import Board
 
 SOLVER_NAME = Literal["BFS", "UCS", "DFS", "Astar"]
@@ -26,7 +25,7 @@ def initialize_solver(solver_name: SOLVER_NAME, board:Board) -> Solver:
         return UCSSolver(board)
     elif solver_name == 'DFS':
         return DFSSolver(board)
-    #elif solver_name == 'Astar':
-     #   return AstarSolver(board)
+    elif solver_name == 'Astar':
+       return AstarSolver(board)
     else:
         raise ValueError(f"Unknown solver: {solver_name}")
