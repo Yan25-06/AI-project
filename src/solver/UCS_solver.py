@@ -13,7 +13,14 @@ class UCSSolver(Solver):
         super().__init__(initial_board) 
 
     def get_cost(self,node: Node)->int:  
-        return node.moves  # or any other cost function, e.g., number of moves
+        prev_state = node.previous.board if node.previous else None
+        # if first move, cost is 0: 
+        if prev_state is None:  
+            return 0
+
+        # calculate cost based on the previous state and current state
+        cost = self.get_move_cost(prev_state, node.board)
+        return cost
 
 
     def _reconstruct_path(self, node):
@@ -21,7 +28,13 @@ class UCSSolver(Solver):
 
     def expand(self, node: Node)-> list[Node]:
         next_states = node.board.generate_next_states()  
+
+        # initialize next nodes with moves + 1 
         next_nodes = [Node(state, node.moves+1,node) for state in next_states]  
+        # calculate priority for each next node
+        for next_node in next_nodes:
+            next_node.priority = node.priority + self.get_cost(next_node)
+        
         return next_nodes
 
 
@@ -44,26 +57,19 @@ class UCSSolver(Solver):
             # check goal
             if curr_node.board.is_goal():  
                 self.solution = self._reconstruct_path(curr_node)  
-                self.moves = curr_node.moves  
+                self.moves = curr_node.moves   
+                self.expanded_nodes = len(visited)
                 return self.solution
 
             # check if visited
             is_visited = curr_node in visited 
             if not is_visited:
-                visited[curr_node] = curr_node.moves   
+                visited[curr_node] = curr_node.priority   
 
                 # expand  
                 for neighbor in self.expand(curr_node):  
                     is_neighbor_visited = neighbor in visited 
                     if not is_neighbor_visited:
-                        neighbor.previous = curr_node 
-                        neighbor.priority = self.get_cost(neighbor)
                         heappush(queue,neighbor) 
 
-    
         return None
-
-
-    # if is_goal
-    #   self.solution = _reconstruct_path 
-    #   ...
