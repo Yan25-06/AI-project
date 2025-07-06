@@ -54,6 +54,13 @@ class UCSSolver(Solver):
         while len(queue) != 0:  
             curr_node = heappop(queue)   
 
+
+            is_visited = curr_node in visited
+            is_visited_cheaper = visited.get(curr_node,float('inf')) < curr_node.priority
+            # skip if visited node is cheaper (better)
+            if is_visited and is_visited_cheaper:
+                continue
+
             # check goal
             if curr_node.board.is_goal():  
                 self.solution = self._reconstruct_path(curr_node)  
@@ -62,14 +69,13 @@ class UCSSolver(Solver):
                 return self.solution
 
             # check if visited
-            is_visited = curr_node in visited 
-            if not is_visited:
-                visited[curr_node] = curr_node.priority   
+            visited[curr_node] = curr_node.priority   
 
-                # expand  
-                for neighbor in self.expand(curr_node):  
-                    is_neighbor_visited = neighbor in visited 
-                    if not is_neighbor_visited:
-                        heappush(queue,neighbor) 
+            # expand  
+            for neighbor in self.expand(curr_node):  
+                is_neighbor_visited = neighbor in visited  
+                is_neighbor_cheaper = neighbor.priority < visited.get(neighbor,float('inf'))
+                if not is_neighbor_visited or is_neighbor_cheaper:
+                    heappush(queue,neighbor) 
 
         return None

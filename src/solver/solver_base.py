@@ -8,6 +8,7 @@ class Node:
         self.board = board
         self.moves = moves
         self.previous = previous
+        # TODO: priority is used as cost instead, change name to cost
         self.priority = priority  # cho A*, UCS (có thể tùy chỉnh sau)
 
     def __lt__(self, other):
