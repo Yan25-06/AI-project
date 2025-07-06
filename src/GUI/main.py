@@ -10,7 +10,7 @@ if __name__ == "__main__":
     display_title()
     display_selectbox()
     
-    col1, sep12, col2, sep23, col3 = st.columns([0.7, 0.1, 3, 0.2, 0.5])
+    col1, sep12, col2, sep23, col3 = st.columns([0.7, 0.1, 3, 0.25, 0.5])
     with sep12:
         st.markdown(
             "<div style='border-left: 2px solid #bbb; height: 400px; margin: auto'></div>",

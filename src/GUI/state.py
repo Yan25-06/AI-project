@@ -3,11 +3,13 @@ import pickle
 import os
 import sys
 from time import sleep
-import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 # Thêm thư mục cha của 'src' vào sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 def init_session_state():
+    if "background" not in st.session_state:
+        st.session_state.background = mpimg.imread(f"src/GUI/assets/Background.png")
     if "algorithm" not in st.session_state:
         st.session_state.algorithm = "Astar"
     if "map" not in st.session_state:
@@ -34,7 +36,7 @@ def init_session_state():
         return
 def get_total_cost(state_path):
     total_cost = 0
-    for i in range(1, len(state_path)):
+    for i in range(1, len(state_path) - 4):
         total_cost += get_move_cost(state_path[i - 1], state_path[i])
     return total_cost
 def get_move_cost(current_state, next_state, prev=False):

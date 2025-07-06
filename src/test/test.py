@@ -1,6 +1,7 @@
 import time
 import tracemalloc
 import csv
+import pickle
 from ..helper.solver_factory import initialize_solver
 from ..game.game import Board
 test_cases_1 = [
@@ -189,9 +190,7 @@ def print_test_cases(test_cases: list[dict]):
             print(f"  {label}: x={car['x']}, y={car['y']}, length={car['length']}, dir={car['dir']}")
         print("-" * 40)
 
-tests = parse_test_cases("./src/test/jams.txt")
-# print_test_cases(tests)
-test("BFS", tests)
+
 # solver_name = "Astar"
 # test_num = 0
 # sec, mem, solver = test_func(solver_name, test_cases[test_num])
