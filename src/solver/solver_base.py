@@ -4,11 +4,12 @@ from ..game.game import Board
 Solution = list[Board]
 
 class Node: 
-    def __init__(self, board: Board, moves:int, previous):
+    def __init__(self, board: Board, moves:int, previous: 'Node' = None, priority: int = 0):
         self.board = board
         self.moves = moves
         self.previous = previous
-        self.priority = 0  # cho A*, UCS (có thể tùy chỉnh sau)
+        # TODO: priority is used as cost instead, change name to cost
+        self.priority = priority  # cho A*, UCS (có thể tùy chỉnh sau)
 
     def __lt__(self, other):
         return self.priority < other.priority

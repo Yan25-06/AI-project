@@ -2,6 +2,7 @@ import time
 import tracemalloc
 import csv
 import ast
+import pickle
 from ..helper.solver_factory import initialize_solver
 from ..game.game import Board
 

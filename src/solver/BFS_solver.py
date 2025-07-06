@@ -20,19 +20,19 @@ class BFSSolver(Solver):
         while queue:
             current_node = queue.popleft()
             current_state = current_node.board
-            # Check if the current state is goal
-            # If the current state is the goal, reconstruct the path, get solution and return
-            if current_state.is_goal():
-                self.solution = self._reconstruct_path(current_node)
-                self.moves = current_node.moves
-                self.expanded_nodes = expanded_nodes
-                return
+            expanded_nodes += 1
             # Check all the not visited states
             # and put it in the queue
             next_states = current_state.generate_next_states()
             for next_state in next_states:
                 if next_state not in visited:
-                    expanded_nodes += 1
+                    # Applies early goal check
+                    # If the current state is the goal, reconstruct the path, get solution and return
+                    if next_state.is_goal():
+                        self.solution = self._reconstruct_path(current_node)
+                        self.moves = current_node.moves + 1
+                        self.expanded_nodes = expanded_nodes
+                        return
                     visited.add(next_state)
                     next_node = Node(next_state, current_node.moves + 1, current_node)
                     queue.append(next_node)

@@ -3,11 +3,13 @@ import pickle
 import os
 import sys
 from time import sleep
-import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 # Thêm thư mục cha của 'src' vào sys.path
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..")))
 
 def init_session_state():
+    if "background" not in st.session_state:
+        st.session_state.background = mpimg.imread(f"src/GUI/assets/Background.png")
     if "algorithm" not in st.session_state:
         st.session_state.algorithm = "Astar"
     if "map" not in st.session_state:
@@ -22,19 +24,21 @@ def init_session_state():
             with open(file_path, 'rb') as f:
                 st.session_state.steps = pickle.load(f)
                 st.session_state.curr_step = 0
+                st.session_state.total_cost = get_total_cost(st.session_state.steps)
         except FileNotFoundError:
             st.error("❌ Solution file not found.")
             st.session_state.steps = []
-    if "curr_step" not in st.session_state: 
-        st.session_state.curr_step = 0
-    if "total_cost" not in st.session_state:
-        st.session_state.total_cost = 0 
     if "is_playing" not in st.session_state:
         st.session_state.is_playing = False
     if not st.session_state.steps:
         st.error("❌ No solution found.")
         st.session_state.is_playing = False
         return
+def get_total_cost(state_path):
+    total_cost = 0
+    for i in range(1, len(state_path) - 4):
+        total_cost += get_move_cost(state_path[i - 1], state_path[i])
+    return total_cost
 def get_move_cost(current_state, next_state, prev=False):
     for name, car in current_state.cars.items():
         other_car = next_state.cars[name]
@@ -48,10 +52,8 @@ def update_solution():
 def update_current_step():
     if st.session_state.is_playing:
         if st.session_state.curr_step < len(st.session_state.steps) - 1:
-            curr_step = st.session_state.curr_step
             st.session_state.curr_step += 1
-            st.session_state.total_cost += get_move_cost(st.session_state.steps[curr_step - 1], st.session_state.steps[curr_step])
-            sleep(0.5)
+            sleep(0.2)
             st.rerun()
         else:
             st.session_state.is_playing = False
