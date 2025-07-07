@@ -2,6 +2,7 @@ import streamlit as st
 from state import update_solution
 import cv2
 
+IMG_NAME = ['a', 'b', 'c', 'd', 'e', 'f']
 def display_title():
     st.markdown("<h1 style='text-align: center;'>🚗 Rush Hour Solver GUI</h1>", unsafe_allow_html=True)
     st.markdown("<h3 style='text-align: center;'>Step-by-step solver</h3>", unsafe_allow_html=True)
@@ -10,7 +11,7 @@ def display_selectbox():
     with c2:
         st.selectbox("Select Algorithm", ["Astar", "UCS", "BFS", "DFS"], key="algorithm", on_change=update_solution, index=0)
     with c4:
-        st.selectbox("Select Map", ["MAP_1", "MAP_2", "MAP_3", "MAP_4"], key="map", on_change=update_solution, index=0)
+        st.selectbox("Select Map", ["MAP_1", "MAP_2", "MAP_3", "MAP_4", "MAP_5", "MAP_6", "MAP_7", "MAP_8", "MAP_9", "MAP_10", "MAP_11", "MAP_12", "MAP_13", "MAP_14", "MAP_15", "MAP_16", "MAP_17", "MAP_18", "MAP_19", "MAP_20"], key="map", on_change=update_solution, index=0)
 def display_controls():
     st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
 
@@ -71,7 +72,7 @@ def draw_map(board):
         bg = cv2.resize(bg, (width, height))
 
         # Vẽ xe
-        for name, car in board.cars.items():
+        for i, (name, car) in enumerate(board.cars.items()):
             x, y = car.x, car.y
             dx = car.length if car.dir == 'H' else 1
             dy = car.length if car.dir == 'V' else 1
@@ -80,8 +81,12 @@ def draw_map(board):
             py = y * cell_size
             pw = dx * cell_size
             ph = dy * cell_size
-
-            img_path = f"src/GUI/assets/R.png" if name == 'R' else f"src/GUI/assets/{car.length}3.png"
+            
+            if name == 'R':
+                img_path = f"src/GUI/assets/R.png"  
+            else:
+                name = IMG_NAME[i % len(IMG_NAME)] if car.length == 2 else name
+                img_path = f"src/GUI/assets/{car.length}{name}.png"
             img = cv2.imread(img_path, cv2.IMREAD_UNCHANGED)
             if car.dir == 'H':
                 img = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)

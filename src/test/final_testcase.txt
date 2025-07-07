@@ -18,8 +18,8 @@ cars = {
     'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
     'b': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
-    'C': {'x': 2, 'y': 1, 'length': 3, 'dir': 'H'},
-    'D': {'x': 1, 'y': 4, 'length': 3, 'dir': 'H'},
+    'A': {'x': 2, 'y': 1, 'length': 3, 'dir': 'H'},
+    'B': {'x': 1, 'y': 4, 'length': 3, 'dir': 'H'},
 }
 Initial board:
 a a . . . .
@@ -34,10 +34,10 @@ test 3:
 cars = {
     'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
     'A': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
-    'b': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
-    'C': {'x': 2, 'y': 0, 'length': 3, 'dir': 'H'},
-    'd': {'x': 2, 'y': 4, 'length': 2, 'dir': 'H'},
-    'e': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'a': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+    'B': {'x': 2, 'y': 0, 'length': 3, 'dir': 'H'},
+    'b': {'x': 2, 'y': 4, 'length': 2, 'dir': 'H'},
+    'c': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
 }
 Initial board:
 . . C C C A
@@ -52,8 +52,8 @@ test 4:
 cars = {
     'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
     'A': {'x': 4, 'y': 0, 'length': 3, 'dir': 'V'},
-    'b': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
-    'c': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'a': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
+    'b': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
 }
 Initial board:
 . . . . A .
@@ -68,14 +68,14 @@ test 5:
 cars = {
     'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 0, 'y': 0, 'length': 2, 'dir': 'V'},
-    'B': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
-    'c': {'x': 3, 'y': 4, 'length': 2, 'dir': 'H'},
-    'd': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
-    'E': {'x': 3, 'y': 0, 'length': 3, 'dir': 'H'},
-    'f': {'x': 1, 'y': 1, 'length': 2, 'dir': 'H'},
-    'g': {'x': 3, 'y': 1, 'length': 2, 'dir': 'V'},
-    'h': {'x': 2, 'y': 4, 'length': 2, 'dir': 'V'},
-    'I': {'x': 5, 'y': 2, 'length': 3, 'dir': 'V'},
+    'A': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
+    'b': {'x': 3, 'y': 4, 'length': 2, 'dir': 'H'},
+    'c': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
+    'B': {'x': 3, 'y': 0, 'length': 3, 'dir': 'H'},
+    'd': {'x': 1, 'y': 1, 'length': 2, 'dir': 'H'},
+    'e': {'x': 3, 'y': 1, 'length': 2, 'dir': 'V'},
+    'f': {'x': 2, 'y': 4, 'length': 2, 'dir': 'V'},
+    'C': {'x': 5, 'y': 2, 'length': 3, 'dir': 'V'},
 }
 Initial board:
 a . . E E E
@@ -90,15 +90,15 @@ test 6:
 cars = {
     'R': {'x': 1, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 3, 'y': 2, 'length': 3, 'dir': 'V'},
-    'c': {'x': 0, 'y': 4, 'length': 2, 'dir': 'V'},
-    'd': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
-    'E': {'x': 4, 'y': 1, 'length': 3, 'dir': 'V'},
-    'f': {'x': 3, 'y': 0, 'length': 2, 'dir': 'V'},
-    'g': {'x': 0, 'y': 1, 'length': 2, 'dir': 'H'},
-    'h': {'x': 2, 'y': 3, 'length': 2, 'dir': 'V'},
-    'I': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
-    'J': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
+    'A': {'x': 3, 'y': 2, 'length': 3, 'dir': 'V'},
+    'b': {'x': 0, 'y': 4, 'length': 2, 'dir': 'V'},
+    'c': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
+    'B': {'x': 4, 'y': 1, 'length': 3, 'dir': 'V'},
+    'd': {'x': 3, 'y': 0, 'length': 2, 'dir': 'V'},
+    'e': {'x': 0, 'y': 1, 'length': 2, 'dir': 'H'},
+    'f': {'x': 2, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
+    'D': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
 }
 Initial board:
 a a . f . .
@@ -113,18 +113,18 @@ test 7:
 cars = {
     'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 3, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
-    'c': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
-    'd': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
-    'E': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
-    'f': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
-    'g': {'x': 4, 'y': 1, 'length': 2, 'dir': 'V'},
-    'h': {'x': 3, 'y': 2, 'length': 2, 'dir': 'V'},
-    'i': {'x': 4, 'y': 3, 'length': 2, 'dir': 'H'},
-    'J': {'x': 3, 'y': 4, 'length': 3, 'dir': 'H'},
-    'k': {'x': 0, 'y': 4, 'length': 2, 'dir': 'H'},
-    'l': {'x': 2, 'y': 4, 'length': 2, 'dir': 'V'},
-    'm': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
+    'A': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
+    'b': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
+    'c': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
+    'B': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+    'd': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
+    'e': {'x': 4, 'y': 1, 'length': 2, 'dir': 'V'},
+    'f': {'x': 3, 'y': 2, 'length': 2, 'dir': 'V'},
+    'g': {'x': 4, 'y': 3, 'length': 2, 'dir': 'H'},
+    'C': {'x': 3, 'y': 4, 'length': 3, 'dir': 'H'},
+    'h': {'x': 0, 'y': 4, 'length': 2, 'dir': 'H'},
+    'i': {'x': 2, 'y': 4, 'length': 2, 'dir': 'V'},
+    'j': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
 }
 Initial board:
 . . . a a E
@@ -142,14 +142,14 @@ cars = {
     'b': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
     'c': {'x': 3, 'y': 3, 'length': 2, 'dir': 'H'},
     'd': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
-    'E': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
-    'f': {'x': 2, 'y': 0, 'length': 2, 'dir': 'H'},
-    'g': {'x': 4, 'y': 0, 'length': 2, 'dir': 'V'},
-    'h': {'x': 1, 'y': 2, 'length': 2, 'dir': 'V'},
-    'i': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
-    'J': {'x': 0, 'y': 3, 'length': 3, 'dir': 'V'},
-    'k': {'x': 1, 'y': 5, 'length': 2, 'dir': 'H'},
-    'l': {'x': 4, 'y': 5, 'length': 2, 'dir': 'H'},
+    'A': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
+    'e': {'x': 2, 'y': 0, 'length': 2, 'dir': 'H'},
+    'f': {'x': 4, 'y': 0, 'length': 2, 'dir': 'V'},
+    'g': {'x': 1, 'y': 2, 'length': 2, 'dir': 'V'},
+    'h': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
+    'B': {'x': 0, 'y': 3, 'length': 3, 'dir': 'V'},
+    'i': {'x': 1, 'y': 5, 'length': 2, 'dir': 'H'},
+    'j': {'x': 4, 'y': 5, 'length': 2, 'dir': 'H'},
 }
 Initial board:
 a a f f g .
@@ -164,10 +164,10 @@ test 9:
 cars = {
     'R': {'x': 1, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 1, 'y': 3, 'length': 2, 'dir': 'H'},
-    'B': {'x': 3, 'y': 2, 'length': 3, 'dir': 'V'},
-    'c': {'x': 1, 'y': 4, 'length': 2, 'dir': 'V'},
-    'd': {'x': 2, 'y': 5, 'length': 2, 'dir': 'H'},
-    'E': {'x': 5, 'y': 3, 'length': 3, 'dir': 'V'},
+    'A': {'x': 3, 'y': 2, 'length': 3, 'dir': 'V'},
+    'b': {'x': 1, 'y': 4, 'length': 2, 'dir': 'V'},
+    'c': {'x': 2, 'y': 5, 'length': 2, 'dir': 'H'},
+    'B': {'x': 5, 'y': 3, 'length': 3, 'dir': 'V'},
 }
 Initial board:
 . . . . . .
@@ -206,16 +206,16 @@ test 11:
 cars = {
     'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 0, 'y': 0, 'length': 2, 'dir': 'V'},
-    'B': {'x': 0, 'y': 4, 'length': 3, 'dir': 'H'},
-    'c': {'x': 4, 'y': 4, 'length': 2, 'dir': 'V'},
-    'd': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
-    'E': {'x': 1, 'y': 0, 'length': 3, 'dir': 'H'},
-    'f': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
-    'g': {'x': 4, 'y': 1, 'length': 2, 'dir': 'H'},
-    'h': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
-    'i': {'x': 5, 'y': 4, 'length': 2, 'dir': 'V'},
-    'J': {'x': 3, 'y': 3, 'length': 3, 'dir': 'V'},
-    'K': {'x': 0, 'y': 5, 'length': 3, 'dir': 'H'},
+    'A': {'x': 0, 'y': 4, 'length': 3, 'dir': 'H'},
+    'b': {'x': 4, 'y': 4, 'length': 2, 'dir': 'V'},
+    'c': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
+    'B': {'x': 1, 'y': 0, 'length': 3, 'dir': 'H'},
+    'd': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
+    'e': {'x': 4, 'y': 1, 'length': 2, 'dir': 'H'},
+    'f': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
+    'j': {'x': 5, 'y': 4, 'length': 2, 'dir': 'V'},
+    'C': {'x': 3, 'y': 3, 'length': 3, 'dir': 'V'},
+    'D': {'x': 0, 'y': 5, 'length': 3, 'dir': 'H'},
 }
 Initial board:
 a E E E . .
@@ -230,11 +230,11 @@ test 12:
 cars = {
     'R': {'x': 1, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 1, 'y': 3, 'length': 3, 'dir': 'H'},
-    'C': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
-    'D': {'x': 3, 'y': 0, 'length': 3, 'dir': 'V'},
-    'e': {'x': 2, 'y': 0, 'length': 2, 'dir': 'V'},
-    'F': {'x': 0, 'y': 1, 'length': 3, 'dir': 'V'},
+    'A': {'x': 1, 'y': 3, 'length': 3, 'dir': 'H'},
+    'B': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
+    'C': {'x': 3, 'y': 0, 'length': 3, 'dir': 'V'},
+    'b': {'x': 2, 'y': 0, 'length': 2, 'dir': 'V'},
+    'D': {'x': 0, 'y': 1, 'length': 3, 'dir': 'V'},
 }
 Initial board:
 a a e D . .
@@ -252,11 +252,11 @@ cars = {
     'b': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
     'c': {'x': 1, 'y': 3, 'length': 2, 'dir': 'H'},
     'd': {'x': 0, 'y': 2, 'length': 2, 'dir': 'V'},
-    'E': {'x': 0, 'y': 4, 'length': 3, 'dir': 'H'},
-    'f': {'x': 3, 'y': 0, 'length': 2, 'dir': 'H'},
-    'g': {'x': 1, 'y': 1, 'length': 2, 'dir': 'V'},
-    'h': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
-    'i': {'x': 4, 'y': 4, 'length': 2, 'dir': 'V'},
+    'A': {'x': 0, 'y': 4, 'length': 3, 'dir': 'H'},
+    'e': {'x': 3, 'y': 0, 'length': 2, 'dir': 'H'},
+    'f': {'x': 1, 'y': 1, 'length': 2, 'dir': 'V'},
+    'g': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'h': {'x': 4, 'y': 4, 'length': 2, 'dir': 'V'},
 }
 Initial board:
 . . a f f .
@@ -271,17 +271,17 @@ test 14:
 cars = {
     'R': {'x': 1, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 1, 'y': 3, 'length': 3, 'dir': 'H'},
-    'c': {'x': 1, 'y': 4, 'length': 2, 'dir': 'V'},
-    'd': {'x': 0, 'y': 1, 'length': 2, 'dir': 'H'},
-    'E': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
-    'f': {'x': 2, 'y': 0, 'length': 2, 'dir': 'V'},
-    'g': {'x': 4, 'y': 0, 'length': 2, 'dir': 'H'},
-    'h': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
-    'i': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
-    'J': {'x': 0, 'y': 2, 'length': 3, 'dir': 'V'},
-    'k': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
-    'l': {'x': 4, 'y': 5, 'length': 2, 'dir': 'H'},
+    'A': {'x': 1, 'y': 3, 'length': 3, 'dir': 'H'},
+    'b': {'x': 1, 'y': 4, 'length': 2, 'dir': 'V'},
+    'c': {'x': 0, 'y': 1, 'length': 2, 'dir': 'H'},
+    'B': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
+    'd': {'x': 2, 'y': 0, 'length': 2, 'dir': 'V'},
+    'e': {'x': 4, 'y': 0, 'length': 2, 'dir': 'H'},
+    'f': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'g': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
+    'C': {'x': 0, 'y': 2, 'length': 3, 'dir': 'V'},
+    'h': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'i': {'x': 4, 'y': 5, 'length': 2, 'dir': 'H'},
 }
 Initial board:
 a a f . g g
@@ -296,14 +296,14 @@ test 15:
 cars = {
     'R': {'x': 1, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 2, 'y': 0, 'length': 2, 'dir': 'V'},
-    'B': {'x': 5, 'y': 3, 'length': 3, 'dir': 'V'},
-    'c': {'x': 2, 'y': 5, 'length': 2, 'dir': 'H'},
-    'd': {'x': 2, 'y': 3, 'length': 2, 'dir': 'H'},
-    'E': {'x': 0, 'y': 0, 'length': 3, 'dir': 'V'},
-    'f': {'x': 3, 'y': 1, 'length': 2, 'dir': 'V'},
-    'g': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
-    'h': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
-    'I': {'x': 3, 'y': 0, 'length': 3, 'dir': 'H'},
+    'A': {'x': 5, 'y': 3, 'length': 3, 'dir': 'V'},
+    'b': {'x': 2, 'y': 5, 'length': 2, 'dir': 'H'},
+    'c': {'x': 2, 'y': 3, 'length': 2, 'dir': 'H'},
+    'B': {'x': 0, 'y': 0, 'length': 3, 'dir': 'V'},
+    'd': {'x': 3, 'y': 1, 'length': 2, 'dir': 'V'},
+    'e': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
+    'f': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
+    'C': {'x': 3, 'y': 0, 'length': 3, 'dir': 'H'},
 }
 Initial board:
 E . a I I I
@@ -318,13 +318,13 @@ test 16:
 cars = {
     'R': {'x': 1, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 1, 'y': 3, 'length': 3, 'dir': 'H'},
-    'C': {'x': 0, 'y': 5, 'length': 3, 'dir': 'H'},
-    'd': {'x': 1, 'y': 4, 'length': 2, 'dir': 'H'},
-    'E': {'x': 3, 'y': 0, 'length': 3, 'dir': 'V'},
-    'f': {'x': 2, 'y': 0, 'length': 2, 'dir': 'V'},
-    'g': {'x': 0, 'y': 1, 'length': 2, 'dir': 'H'},
-    'H': {'x': 0, 'y': 2, 'length': 3, 'dir': 'V'},
+    'A': {'x': 1, 'y': 3, 'length': 3, 'dir': 'H'},
+    'B': {'x': 0, 'y': 5, 'length': 3, 'dir': 'H'},
+    'b': {'x': 1, 'y': 4, 'length': 2, 'dir': 'H'},
+    'C': {'x': 3, 'y': 0, 'length': 3, 'dir': 'V'},
+    'c': {'x': 2, 'y': 0, 'length': 2, 'dir': 'V'},
+    'd': {'x': 0, 'y': 1, 'length': 2, 'dir': 'H'},
+    'D': {'x': 0, 'y': 2, 'length': 3, 'dir': 'V'},
 }
 Initial board:
 a a f E . .
@@ -339,16 +339,16 @@ test 17:
 cars = {
     'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 4, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
-    'c': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
-    'd': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
-    'E': {'x': 0, 'y': 0, 'length': 3, 'dir': 'V'},
-    'f': {'x': 1, 'y': 1, 'length': 2, 'dir': 'V'},
-    'g': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
-    'h': {'x': 2, 'y': 4, 'length': 2, 'dir': 'V'},
-    'i': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
-    'J': {'x': 1, 'y': 0, 'length': 3, 'dir': 'H'},
-    'K': {'x': 0, 'y': 3, 'length': 3, 'dir': 'H'},
+    'A': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
+    'b': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'c': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
+    'B': {'x': 0, 'y': 0, 'length': 3, 'dir': 'V'},
+    'd': {'x': 1, 'y': 1, 'length': 2, 'dir': 'V'},
+    'e': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
+    'f': {'x': 2, 'y': 4, 'length': 2, 'dir': 'V'},
+    'g': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
+    'C': {'x': 1, 'y': 0, 'length': 3, 'dir': 'H'},
+    'D': {'x': 0, 'y': 3, 'length': 3, 'dir': 'H'},
 }
 Initial board:
 E J J J a a
@@ -363,15 +363,15 @@ test 18:
 cars = {
     'R': {'x': 1, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 2, 'y': 3, 'length': 3, 'dir': 'V'},
-    'c': {'x': 0, 'y': 4, 'length': 2, 'dir': 'H'},
-    'd': {'x': 0, 'y': 2, 'length': 2, 'dir': 'V'},
-    'E': {'x': 3, 'y': 0, 'length': 3, 'dir': 'H'},
-    'f': {'x': 3, 'y': 1, 'length': 2, 'dir': 'V'},
-    'g': {'x': 4, 'y': 1, 'length': 2, 'dir': 'H'},
-    'h': {'x': 3, 'y': 3, 'length': 2, 'dir': 'H'},
-    'I': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
-    'J': {'x': 5, 'y': 2, 'length': 3, 'dir': 'V'},
+    'A': {'x': 2, 'y': 3, 'length': 3, 'dir': 'V'},
+    'b': {'x': 0, 'y': 4, 'length': 2, 'dir': 'H'},
+    'c': {'x': 0, 'y': 2, 'length': 2, 'dir': 'V'},
+    'B': {'x': 3, 'y': 0, 'length': 3, 'dir': 'H'},
+    'd': {'x': 3, 'y': 1, 'length': 2, 'dir': 'V'},
+    'e': {'x': 4, 'y': 1, 'length': 2, 'dir': 'H'},
+    'f': {'x': 3, 'y': 3, 'length': 2, 'dir': 'H'},
+    'C': {'x': 3, 'y': 5, 'length': 3, 'dir': 'H'},
+    'D': {'x': 5, 'y': 2, 'length': 3, 'dir': 'V'},
 }
 Initial board:
 a a . E E E
@@ -386,15 +386,15 @@ test 19:
 cars = {
     'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 3, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 1, 'y': 3, 'length': 3, 'dir': 'H'},
-    'c': {'x': 4, 'y': 4, 'length': 2, 'dir': 'V'},
-    'd': {'x': 1, 'y': 4, 'length': 2, 'dir': 'H'},
-    'E': {'x': 2, 'y': 0, 'length': 3, 'dir': 'V'},
-    'f': {'x': 3, 'y': 1, 'length': 2, 'dir': 'V'},
-    'g': {'x': 0, 'y': 3, 'length': 2, 'dir': 'V'},
-    'h': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
-    'i': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
-    'J': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+    'A': {'x': 1, 'y': 3, 'length': 3, 'dir': 'H'},
+    'b': {'x': 4, 'y': 4, 'length': 2, 'dir': 'V'},
+    'c': {'x': 1, 'y': 4, 'length': 2, 'dir': 'H'},
+    'B': {'x': 2, 'y': 0, 'length': 3, 'dir': 'V'},
+    'd': {'x': 3, 'y': 1, 'length': 2, 'dir': 'V'},
+    'e': {'x': 0, 'y': 3, 'length': 2, 'dir': 'V'},
+    'f': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
+    'g': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
+    'C': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
 }
 Initial board:
 . . E a a J
@@ -409,17 +409,17 @@ test 20:
 cars = {
     'R': {'x': 3, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 1, 'y': 0, 'length': 2, 'dir': 'H'},
-    'B': {'x': 0, 'y': 3, 'length': 3, 'dir': 'H'},
-    'c': {'x': 2, 'y': 4, 'length': 2, 'dir': 'V'},
-    'd': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
-    'E': {'x': 0, 'y': 0, 'length': 3, 'dir': 'V'},
-    'f': {'x': 4, 'y': 0, 'length': 2, 'dir': 'V'},
-    'g': {'x': 1, 'y': 1, 'length': 2, 'dir': 'V'},
-    'h': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
-    'i': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
-    'J': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
-    'k': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
-    'l': {'x': 3, 'y': 5, 'length': 2, 'dir': 'H'},
+    'A': {'x': 0, 'y': 3, 'length': 3, 'dir': 'H'},
+    'b': {'x': 2, 'y': 4, 'length': 2, 'dir': 'V'},
+    'c': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+    'B': {'x': 0, 'y': 0, 'length': 3, 'dir': 'V'},
+    'd': {'x': 4, 'y': 0, 'length': 2, 'dir': 'V'},
+    'e': {'x': 1, 'y': 1, 'length': 2, 'dir': 'V'},
+    'f': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
+    'g': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'C': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
+    'h': {'x': 0, 'y': 5, 'length': 2, 'dir': 'H'},
+    'i': {'x': 3, 'y': 5, 'length': 2, 'dir': 'H'},
 }
 Initial board:
 E a a . f .

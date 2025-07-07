@@ -64,11 +64,27 @@ def read_testcases(filename):
 
 testcases = read_testcases("./src/test/final_testcase.txt")
 
-
-
+def make_data(algorithm, test_index):
+    _, _, solver = test_func(algorithm, testcases[test_index])
+    last_board = solver.solution[-1]
+    new_boards = []
+    for dx in range(1, 5):  # tương ứng x=5,6,7,8
+        new_cars = {name: car.copy() for name, car in last_board.cars.items()}
+        new_cars['R'].x = 4 + dx  # cập nhật vị trí mới của xe đỏ
+        new_boards.append(Board(new_cars, size=last_board.size))
+        
+    # Thêm vào solver.solution
+    solver.solution += new_boards
+    with open(f"src/GUI/Solution/{algorithm}/MAP_{test_index + 1}.pkl", "wb") as f:
+        pickle.dump(solver.solution, f)
+    
+# al = ["UCS"]
+# for a in al:
+#     for j in range(4, 20):
+#         make_data(a, j)
 # tests = parse_test_cases("./src/test/jams.txt")
-test("Astar", testcases)
-# test("UCS", tests)
+# test("Astar", testcases)
+test("UCS", testcases)
 # test("BFS", tests)
 # test("DFS", tests)
 # solver_name = "Astar"
