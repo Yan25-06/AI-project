@@ -78,13 +78,13 @@ def make_data(algorithm, test_index):
     with open(f"src/GUI/Solution/{algorithm}/MAP_{test_index + 1}.pkl", "wb") as f:
         pickle.dump(solver.solution, f)
     
-# al = ["UCS"]
-# for a in al:
-#     for j in range(4, 20):
-#         make_data(a, j)
+al = ["UCS"]
+for a in al:
+    for j in range(20):
+        make_data(a, j)
 # tests = parse_test_cases("./src/test/jams.txt")
 # test("Astar", testcases)
-test("UCS", testcases)
+# test("UCS", testcases)
 # test("BFS", tests)
 # test("DFS", tests)
 # solver_name = "Astar"

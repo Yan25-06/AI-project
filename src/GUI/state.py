@@ -17,6 +17,7 @@ def init_session_state():
     if "update_sol" not in st.session_state:
         st.session_state.update_sol = False
     if "steps" not in st.session_state or st.session_state.update_sol:
+        st.session_state.is_playing = False
         st.session_state.update_sol = False
         current_dir = os.path.dirname(__file__)
         file_path = os.path.join(current_dir, "Solution", st.session_state.algorithm, f"{st.session_state.map}.pkl")
@@ -53,7 +54,7 @@ def update_current_step():
     if st.session_state.is_playing:
         if st.session_state.curr_step < len(st.session_state.steps) - 1:
             st.session_state.curr_step += 1
-            sleep(0.1)
+            sleep(0.05)
             st.rerun()
         else:
             st.session_state.is_playing = False
