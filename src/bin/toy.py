@@ -1,5 +1,6 @@
 from ..game.game import Board
 from ..helper.solver_factory import initialize_solver
+from ..solver.solver_base import Node 
 
 def is_goal_check():
     cars = {
@@ -53,8 +54,22 @@ def main():
             step.print()
             print('---')
 
+def equality_check():  
+    nodea = Node(Board({'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'}}), 0, None) 
+    nodeb = Node(Board({'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'}}), 0, None)
+    # print(f"Node A == Node B: {nodea == nodeb}")  # Expected: True 
+    visited = {} 
+    visited[nodea] = 1.0 
 
+    print( nodeb in visited ) # True  
+    print( nodea == nodeb ) # True
+
+    pass 
 
 if __name__ == "__main__":
+    # equality_check()
+    pass 
     # main()
-    is_goal_check()
+    # is_goal_check()
+    
+

@@ -56,10 +56,7 @@ class UCSSolver(Solver):
 
 
             is_visited = curr_node in visited
-            is_visited_not_better = visited.get(curr_node,float('inf')) <= curr_node.priority
-            # skip if visited node is good enough (cheaper or equal cost)
-            # equal check avoid infinite loop 
-            if is_visited and is_visited_not_better:
+            if is_visited: 
                 continue
 
             # check goal
@@ -69,14 +66,11 @@ class UCSSolver(Solver):
                 self.expanded_nodes = len(visited)
                 return self.solution
 
-            # check if visited
-            visited[curr_node] = curr_node.priority   
-
             # expand  
+            visited[curr_node] = curr_node.priority   
             for neighbor in self.expand(curr_node):  
                 is_neighbor_visited = neighbor in visited  
-                is_neighbor_cheaper = neighbor.priority < visited.get(neighbor,float('inf'))
-                if not is_neighbor_visited or is_neighbor_cheaper:
+                if not is_neighbor_visited: 
                     heappush(queue,neighbor) 
 
         return None
