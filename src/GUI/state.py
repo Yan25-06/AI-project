@@ -53,7 +53,7 @@ def update_current_step():
     if st.session_state.is_playing:
         if st.session_state.curr_step < len(st.session_state.steps) - 1:
             st.session_state.curr_step += 1
-            sleep(0.2)
+            sleep(0.1)
             st.rerun()
         else:
             st.session_state.is_playing = False

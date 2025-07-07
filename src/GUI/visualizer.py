@@ -31,7 +31,6 @@ def display_controls():
             st.rerun()
     if st.button("🔄 Reset", key="reset", use_container_width=True):
         st.session_state.curr_step = 0
-        st.session_state.total_cost = 0
         st.session_state.is_playing = False
         st.rerun()
 
