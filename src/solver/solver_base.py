@@ -16,6 +16,14 @@ class Node:
 
     def __gt__(self, other):
         return self.priority > other.priority
+    
+    def __hash__(self):
+        return hash(self.board.__str__())
+
+    def __eq__(self, other):
+        if not isinstance(other, Node):
+            return False
+        return self.board == other.board 
 
 class Solver(ABC):
     def __init__(self, initial_board: Board):
