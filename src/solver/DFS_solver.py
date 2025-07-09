@@ -50,25 +50,23 @@ class DFSSolver(Solver):
             self.moves = -1
 
     def _dfs_backtrack(self, current_state, moves, parent_node, visited):
+        if current_state in visited:
+            return None
+        print("States in visited:", len(visited))
+        print(f"Visiting state: {moves}")
+        current_state.print()  # Print the current state for debugging
         visited.add(current_state)
         self.expanded_nodes += 1
-        print(f"DFS expanded nodes: {self.expanded_nodes}")
-        if current_state.is_goal():
-            current_node = Node(current_state, moves, parent_node)
-            visited.remove(current_state)  # Remove from visited to allow other paths
-            return self._reconstruct_path(Node(current_state, moves, parent_node))
         next_states = current_state.generate_next_states()
         current_node = Node(current_state, moves, parent_node)
         for next_state in next_states:
+            if next_state.is_goal():
+                    return self._reconstruct_path(current_node)
             if next_state not in visited:
-                if next_state.is_goal():
-                    current_node = Node(current_state, moves, parent_node)
-                    visited.remove(current_state)
-                    return self._reconstruct_path(Node(next_state,moves + 1, current_node))
+                # print(f"Visiting state: {moves}")
+                # next_state.print()
                 result = self._dfs_backtrack(next_state, moves + 1, current_node, visited)
                 if result:
-                    visited.remove(current_state)
                     return result
-            
         visited.remove(current_state)
         return None    

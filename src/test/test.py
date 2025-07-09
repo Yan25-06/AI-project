@@ -63,7 +63,7 @@ def read_testcases(filename):
     return testcases
 
 testcases = read_testcases("./src/test/final_testcase.txt")
-
+test5 = read_testcases("./src/test/test5.txt")
 def make_data(algorithm, test_index):
     _, _, solver = test_func(algorithm, testcases[test_index])
     last_board = solver.solution[-1]
@@ -86,7 +86,7 @@ for a in al:
 # test("Astar", testcases)
 # test("UCS", testcases)
 # test("BFS", tests)
-# test("DFS", tests)
+test("DFS", test5)
 # solver_name = "Astar"
 # test_num = 0
 # sec, mem, solver = test_func(solver_name, test_cases[test_num])

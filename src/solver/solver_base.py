@@ -23,7 +23,7 @@ class Node:
     def __eq__(self, other):
         if not isinstance(other, Node):
             return False
-        return self.board == other.board 
+        return self.board == other.board
 
 class Solver(ABC):
     def __init__(self, initial_board: Board):
