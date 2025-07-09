@@ -17,15 +17,17 @@ def main():
 
     cars = {
         'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
-        'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
-        'B': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
-        'C': {'x': 2, 'y': 1, 'length': 3, 'dir': 'H'},
-        'D': {'x': 1, 'y': 4, 'length': 3, 'dir': 'H'},
+        'A': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+        'B': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+        'C': {'x': 2, 'y': 0, 'length': 3, 'dir': 'H'},
+        'D': {'x': 2, 'y': 4, 'length': 2, 'dir': 'H'},
+        'E': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'}
     }
+
 
     board = Board(cars) 
     print("Initial board:")
-    board.print()
+    print(board)
 
     solver = initialize_solver("UCS",board) 
     res = solver.solve() 

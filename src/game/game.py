@@ -152,6 +152,11 @@ class Board:
                 else:
                     mat[y + i][x] = name
         return mat
+
+    def __str__(self):
+        mat = self.to_matrix()
+        return "\n".join(" ".join(row) for row in mat)
+
     def print(self):
         mat = self.to_matrix()
         for row in mat:
