@@ -23,7 +23,7 @@ class AstarSolver(Solver):
         
         # h(n) = a (num of block cars of redCar) + min(num of block cars of a) + manhanttan distance
 
-        # calc manhattan distance
+        # calc manhattan distance of red car
         heuristics_val = board.exit_col - red_car.x
 
         # calc num of block cars of redCar
@@ -37,23 +37,27 @@ class AstarSolver(Solver):
         for block_car in block_cars:
             block_car_up, block_car_down = self._calc_up_down_block_car(block_car, board)
             if (block_car == 3): # chi tinh phia duoi 
-                heuristics_val += block_car_down
+                heuristics_val += block_car_down # num block cars 
+                heuristics_val += 5 - (block_car.y + block_car.length - 1) # manhattan distance
             else: 
-                heuristics_val += min(block_car_up, block_car_down)
+                if (block_car_up <= block_car_down):
+                    heuristics_val += block_car_up 
+                    heuristics_val += block_car.y
+                else:
+                    heuristics_val += block_car_down
+                    heuristics_val += 4 - (block_car.y + block_car.length - 1)
 
         return heuristics_val
     
     def solve(self): 
         open_set = heapdict()
         visited: dict[Board,int] = {}
-        f_score: dict[Board,int] = {}
         board_to_Node: dict[Board, Node] = {}
 
         self.expanded_nodes = 0
         init_state = Node(self.initial_board, self.moves, None)
         init_state.priority = self.heuristic(self.initial_board)
         open_set[self.initial_board] = init_state.priority
-        f_score[self.initial_board] = init_state.priority
         board_to_Node[self.initial_board] = init_state
         
         while open_set:
@@ -75,9 +79,8 @@ class AstarSolver(Solver):
                     continue
                 g = curr_node.moves + self.get_move_cost(current_board, board)
                 f = g + self.heuristic(board)
-                if board not in f_score or f < f_score[board]:
+                if board not in visited or f < open_set[board]:
                     open_set[board] = f
-                    f_score[board] = f
                     neighbor = Node(board, g, curr_node)
                     neighbor.priority = f
                     board_to_Node[board] = neighbor
