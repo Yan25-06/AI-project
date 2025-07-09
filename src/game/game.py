@@ -161,17 +161,35 @@ class Board:
         mat = self.to_matrix()
         for row in mat:
             print(" ".join(row))
+    # def __eq__(self, other):
+    #     if not isinstance(other, Board):
+    #         return False
+    #     return sorted(
+    #         (name, car.x, car.y, car.length)
+    #         for name, car in self.cars.items()
+    #     ) == sorted(
+    #         (name, car.x, car.y, car.length)
+    #         for name, car in other.cars.items()
+    #     )
     def __eq__(self, other):
+        '''
+        So sánh hai Board có bằng nhau không.
+        Hai board bằng nhau nếu tất cả xe có vị trí và thuộc tính giống nhau.
+        '''
         if not isinstance(other, Board):
             return False
-        return sorted(
-            (name, car.x, car.y, car.length)
-            for name, car in self.cars.items()
-        ) == sorted(
-            (name, car.x, car.y, car.length)
-            for name, car in other.cars.items()
-        )
-
+        if self.size != other.size or self.exit_row != other.exit_row or self.exit_col != other.exit_col:
+            return False
+        if len(self.cars) != len(other.cars):
+            return False
+        for name, car in self.cars.items():
+            if name not in other.cars:
+                return False
+            other_car = other.cars[name]
+            if (car.x != other_car.x or car.y != other_car.y or 
+                car.length != other_car.length or car.dir != other_car.dir):
+                return False
+        return True
     def __hash__(self):
         return hash(tuple(sorted((name, car.x, car.y, car.length) for name, car in self.cars.items())))
     

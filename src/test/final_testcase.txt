@@ -1,4 +1,4 @@
-test 1:
+ptest 1:
 cars = {
     'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
     'a': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
