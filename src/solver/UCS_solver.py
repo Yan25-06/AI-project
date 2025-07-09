@@ -2,6 +2,7 @@ from .solver_base import Solver, Node, Solution
 from time import sleep
 from heapq import heappop, heappush,heapify
 from ..game.game import Board
+import heapdict
 
 
 
@@ -30,7 +31,7 @@ class UCSSolver(Solver):
         next_states = node.board.generate_next_states()  
 
         # initialize next nodes with moves + 1 
-        next_nodes = [Node(state, node.moves+1,node) for state in next_states]  
+        next_nodes = [Node(state, node.moves+1, node) for state in next_states]  
         # calculate priority for each next node
         for next_node in next_nodes:
             next_node.priority = node.priority + self.get_cost(next_node)
@@ -40,37 +41,50 @@ class UCSSolver(Solver):
 
     def solve(self)-> Solution | None: 
         """
-        Dictionary of node-cost: Python dict use hash table for O(1) lookup.
+        Min heap is best for pop() because we want to expand the node with the lowest cost first.  
+        Dictionary is used for O(1) lookup of visited nodes. 
+        -> heapdict = min heap + dictionary
         """
-        visited: dict[Node,float] = {}
+        queue = heapdict.heapdict({Node(self.initial_board,0): 0})  
 
         """
-        Min heap is best because we want to expand the node with the lowest cost first. 
+        closed_set is used to keep track of nodes that have already been popped from frontier (queue).
         """
-        queue: list[Node] =  [Node(self.initial_board, 0, None)]  
-        heapify(queue)
+        closed_set: set[Node] = set()
 
         # get all moves 
         while len(queue) != 0:  
-            curr_node = heappop(queue)   
+            curr_node:Node = queue.popitem()[0]
 
 
-            is_visited = curr_node in visited
-            if is_visited: 
+            # because it's used to be popped, we won't expand it again
+            is_closed = curr_node in closed_set
+            if is_closed: 
                 continue
+
 
             # check goal
             if curr_node.board.is_goal():  
                 self.solution = self._reconstruct_path(curr_node)  
-                self.moves = curr_node.moves   
-                self.expanded_nodes = len(visited)
+                self.moves = len(self.solution) - 1 # we don't count intial board
+                self.expanded_nodes = len(closed_set)  # number of expanded nodes == len(closed_set)
                 return self.solution
 
+
+
+            # marked as popped and expanded
+            closed_set.add(curr_node)
+
             # expand  
-            visited[curr_node] = curr_node.priority   
             for neighbor in self.expand(curr_node):  
-                is_neighbor_visited = neighbor in visited  
-                if not is_neighbor_visited: 
-                    heappush(queue,neighbor) 
+                is_neighbor_reached = neighbor in queue 
+                # add if not reached
+                if not is_neighbor_reached: 
+                    queue[neighbor] = neighbor.priority  
+                # if reached, and cheaper, update it
+                else: 
+                    is_neighbor_cheaper = neighbor.priority < queue[neighbor]
+                    if is_neighbor_cheaper:
+                        queue[neighbor] = neighbor.priority
 
         return None
