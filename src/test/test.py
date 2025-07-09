@@ -86,7 +86,7 @@ for a in al:
 # test("Astar", testcases)
 # test("UCS", testcases)
 # test("BFS", tests)
-test("DFS", test5)
+test("DFS", testcases)
 # solver_name = "Astar"
 # test_num = 0
 # sec, mem, solver = test_func(solver_name, test_cases[test_num])
