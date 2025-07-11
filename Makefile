@@ -5,6 +5,10 @@ run_toy:
 
 run_streamlit_next_states_visualizers:
 	streamlit run src/bin/generate_next_states.py
+
+# run_gui: 
+# 	python3 -m src.GUI.main
+
 freeze-pip:
 	pip freeze --local > requirements.txt
 

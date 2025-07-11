@@ -61,13 +61,46 @@ def equality_check():
     visited = {} 
     visited[nodea] = 1.0 
 
-    print( nodeb in visited ) # True  
-    print( nodea == nodeb ) # True
+    # print( nodeb in visited ) # True  
+    print(f"Node A == Node B: {nodea == nodeb}")  # Expected: True
 
-    pass 
+
+    # board check 
+    boardA = Board({'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'}}) 
+    boardB = Board({'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'}}) 
+
+    visited = set()
+    visited.add(boardA)
+    visited.add(boardB)
+
+    print(f"Board A == Board B: {boardA == boardB}")  # True
+    print(len(visited)) # in ra 1
+    print(boardA in visited)  # True
+    print(boardB in visited)  # True
+
+
+
+
+def set_passed_by_reference(visited: set): 
+    visited.add(2)
+    print("visited in nested", visited)
+def is_set_passed_by_reference():  
+    visited = set()     
+    # boardA = Board({'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'}})
+
+    set_passed_by_reference(visited) 
+    print("visited in main", visited)  
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     # equality_check()
+    #is_set_passed_by_reference()
     pass 
     # main()
     # is_goal_check()
