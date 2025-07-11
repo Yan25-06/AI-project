@@ -21,6 +21,7 @@ def init_session_state():
         st.session_state.update_sol = False
         current_dir = os.path.dirname(__file__)
         file_path = os.path.join(current_dir, "Solution", st.session_state.algorithm, f"{st.session_state.map}.pkl")
+        print(f"Loading solution from: {file_path}")
         try:
             with open(file_path, 'rb') as f:
                 st.session_state.steps = pickle.load(f)
