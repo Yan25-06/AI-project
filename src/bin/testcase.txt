@@ -1,0 +1,442 @@
+1
+cars = {
+    'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'B': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+}
+Initial board:
+. . . . . .
+. . . . . .
+. . R R A .
+. . . . A .
+. . . . B B
+. . . . . .
+Number of moves: 4
+
+2
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
+    'B': {'x': 2, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 3, 'y': 1, 'length': 3, 'dir': 'H'},
+    'D': {'x': 3, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+A A . . . .
+. . . C C C
+R R . . . .
+. . B . . .
+. . B D D D
+. . . . . .
+Number of moves: 4
+
+3
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 0, 'y': 0, 'length': 2, 'dir': 'H'},
+    'B': {'x': 2, 'y': 2, 'length': 2, 'dir': 'V'},
+    'C': {'x': 2, 'y': 1, 'length': 3, 'dir': 'H'},
+    'D': {'x': 1, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+A A . . . .
+. . C C C .
+R R B . . .
+. . B . . .
+. D D D . .
+. . . . . .
+Number of moves: 7
+
+4
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+    'B': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+    'C': {'x': 2, 'y': 0, 'length': 3, 'dir': 'H'},
+    'D': {'x': 2, 'y': 4, 'length': 2, 'dir': 'H'},
+    'E': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+}
+Initial board:
+. . C C C A
+. . B . . A
+R R B . . A
+. . . . . .
+. . D D E E
+. . . . . .
+Number of moves: 11
+
+5
+cars = {
+    'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 0, 'length': 3, 'dir': 'V'},
+    'B': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+}
+Initial board:
+. . . . A .
+. . . . A .
+. . R R A .
+. . . B . .
+. . . B C C
+. . . . . .
+Number of moves: 12
+
+6
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 0, 'y': 4, 'length': 2, 'dir': 'V'},
+    'E': {'x': 3, 'y': 0, 'length': 2, 'dir': 'V'},
+    'F': {'x': 3, 'y': 2, 'length': 2, 'dir': 'V'},
+    'G': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'H': {'x': 4, 'y': 4, 'length': 2, 'dir': 'V'},
+    'B': {'x': 4, 'y': 0, 'length': 2, 'dir': 'H'},
+    'C': {'x': 5, 'y': 1, 'length': 3, 'dir': 'V'},
+    'D': {'x': 1, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+. . . E B B
+. . . E . C
+R R . F G C
+. . . F G C
+A D D D H .
+A . . . H .
+Number of moves: 17
+
+7
+cars = {
+    'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'E': {'x': 4, 'y': 0, 'length': 2, 'dir': 'V'},
+    'F': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
+    'H': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
+    'B': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'C': {'x': 2, 'y': 3, 'length': 3, 'dir': 'V'},
+    'D': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+}
+Initial board:
+. . . . E D
+. . H H E D
+. . R R A D
+. . C . A .
+. . C F B B
+. . C F . .
+Number of moves: 23
+
+8
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 3, 'length': 3, 'dir': 'V'},
+    'B': {'x': 2, 'y': 0, 'length': 3, 'dir': 'V'},
+    'C': {'x': 0, 'y': 4, 'length': 2, 'dir': 'V'},
+    'D': {'x': 1, 'y': 4, 'length': 2, 'dir': 'H'},
+}
+Initial board:
+. . B . . .
+. . B . . .
+R R B . . .
+. . . . A .
+C D D . A .
+C . . . A .
+Number of moves: 26
+
+9
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 1, 'y': 0, 'length': 2, 'dir': 'H'},
+    'B': {'x': 3, 'y': 0, 'length': 2, 'dir': 'H'},
+    'C': {'x': 0, 'y': 0, 'length': 2, 'dir': 'V'},
+    'D': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+    'F': {'x': 3, 'y': 2, 'length': 3, 'dir': 'V'},
+    'G': {'x': 4, 'y': 2, 'length': 3, 'dir': 'V'},
+    'H': {'x': 0, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+C A A B B .
+C . D . . .
+R R D F G .
+. . . F G .
+H H H F G .
+. . . . . .
+Expanded nodes:
+tim thay path
+Number of moves: 28
+
+10
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 5, 'y': 1, 'length': 2, 'dir': 'V'},
+    'B': {'x': 2, 'y': 4, 'length': 2, 'dir': 'H'},
+    'C': {'x': 1, 'y': 4, 'length': 2, 'dir': 'V'},
+    'D': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
+    'E': {'x': 2, 'y': 5, 'length': 2, 'dir': 'H'},
+    'F': {'x': 3, 'y': 1, 'length': 3, 'dir': 'V'},
+    'G': {'x': 4, 'y': 1, 'length': 3, 'dir': 'V'},
+}
+Initial board:
+. . . . . .
+. . . F G A
+R R . F G A
+D D . F G .
+. C B B . .
+. C E E . .
+Number of moves: 38
+
+11
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 2, 'y': 1, 'length': 2, 'dir': 'V'},
+    'B': {'x': 2, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 1, 'y': 4, 'length': 2, 'dir': 'V'},
+    'D': {'x': 0, 'y': 3, 'length': 2, 'dir': 'H'},
+    'E': {'x': 2, 'y': 5, 'length': 2, 'dir': 'H'},
+    'F': {'x': 3, 'y': 1, 'length': 3, 'dir': 'V'},
+    'G': {'x': 4, 'y': 1, 'length': 3, 'dir': 'V'},
+}
+Initial board:
+. . . . . .
+. . A F G .
+R R A F G .
+D D B F G .
+. C B . . .
+. C E E . .
+Number of moves: 39
+
+12
+cars = {
+    'R': {'x': 2, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 0, 'length': 3, 'dir': 'V'},
+    'B': {'x': 3, 'y': 3, 'length': 2, 'dir': 'V'},
+    'C': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'D': {'x': 0, 'y': 4, 'length': 3, 'dir': 'H'},
+}
+Initial board:
+. . . . A .
+. . . . A .
+. . R R A .
+. . . B . .
+D D D B C C
+. . . . . .
+Number of moves: No solution found
+
+13
+cars = {
+    'R': {'x': 0, 'y': 2, 'length': 2, 'dir': 'H'},
+    'A': {'x': 4, 'y': 2, 'length': 2, 'dir': 'V'},
+    'E': {'x': 4, 'y': 0, 'length': 2, 'dir': 'V'},
+    'F': {'x': 3, 'y': 4, 'length': 2, 'dir': 'V'},
+    'H': {'x': 2, 'y': 1, 'length': 2, 'dir': 'H'},
+    'G': {'x': 0, 'y': 4, 'length': 2, 'dir': 'H'},
+    'B': {'x': 4, 'y': 4, 'length': 2, 'dir': 'H'},
+    'C': {'x': 2, 'y': 3, 'length': 3, 'dir': 'V'},
+    'D': {'x': 5, 'y': 0, 'length': 3, 'dir': 'V'},
+}
+Initial board:
+. . . . E D
+. . H H E D
+R R . . A D
+. . C . A .
+G G C F B B
+. . C F . .
+Number of moves: No solution found
+
+
+Jam-1 (Easy-Medium)
+Cars: 8 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 7 cars (mix of 2-3 length, vertical and horizontal)
+Complexity: Medium - moderate blocking patterns
+Jam-2 (Hard)
+Cars: 11 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 10 cars including multiple 3-length cars
+Complexity: Hard - red car starts at leftmost position, heavy blocking
+Jam-3 (Easy)
+Cars: 6 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 5 cars with strategic positioning
+Complexity: Easy - fewer cars, simpler escape routes
+Jam-4 (Easy)
+Cars: 7 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 6 cars including vertical blockers
+Complexity: Easy - manageable car count
+Jam-5 (Hard)
+Cars: 11 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 10 cars with complex interlocking pattern
+Complexity: Hard - multiple long cars creating barriers
+Jam-6 (Hard)
+Cars: 11 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 10 cars with strategic vertical/horizontal mix
+Complexity: Hard - tight formations requiring sequential moves
+Jam-7 (Medium)
+Cars: 9 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 8 cars with moderate blocking
+Complexity: Medium - balanced difficulty
+Jam-8 (Very Hard)
+Cars: 14 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 13 cars creating maximum density
+Complexity: Very Hard - highest car count, complex patterns
+Jam-9 (Hard)
+Cars: 12 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 11 cars with multiple 3-length vehicles
+Complexity: Hard - dense packing, multiple barriers
+Jam-10 (Hard)
+Cars: 12 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 11 cars with strategic positioning
+Complexity: Hard - requires multiple clearing moves
+Jam-11 (Medium)
+Cars: 8 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 7 cars including long horizontal blockers
+Complexity: Medium - moderate challenge
+Jam-12 (Medium)
+Cars: 8 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 7 cars with corner positioning
+Complexity: Medium - requires careful sequencing
+Jam-13 (Very Hard)
+Cars: 13 total
+Red Car: Position (3,2), Horizontal, Length 2
+Other Cars: 12 cars with complex blocking patterns
+Complexity: Very Hard - red car in middle, heavy surrounding
+Jam-14 (Hard)
+Cars: 12 total
+Red Car: Position (2,2), Horizontal, Length 2
+Other Cars: 11 cars creating layered barriers
+Complexity: Hard - central red car position increases difficulty
+Jam-15 (Very Hard)
+Cars: 14 total
+Red Car: Position (2,2), Horizontal, Length 2
+Other Cars: 13 cars with maximum complexity
+Complexity: Very Hard - central position + maximum car count
+Jam-16 (Hard)
+Cars: 11 total
+Red Car: Position (3,2), Horizontal, Length 2
+Other Cars: 10 cars with strategic vertical barriers
+Complexity: Hard - middle positioning creates challenges
+Jam-17 (Hard)
+Cars: 12 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 11 cars with edge-to-edge blocking
+Complexity: Hard - requires extensive clearing
+Jam-18 (Medium)
+Cars: 9 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 8 cars with corner formations
+Complexity: Medium - manageable complexity
+Jam-19 (Medium)
+Cars: 8 total
+Red Car: Position (2,2), Horizontal, Length 2
+Other Cars: 7 cars with focused blocking
+Complexity: Medium - central position but fewer cars
+Jam-20 (Medium-Hard)
+Cars: 10 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 9 cars with strategic placement
+Complexity: Medium-Hard - good balance of challenge
+Jam-21 (Easy)
+Cars: 7 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 6 cars with open pathways
+Complexity: Easy - fewer blocking elements
+Jam-22 (Hard)
+Cars: 12 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 11 cars with layered defense
+Complexity: Hard - requires multiple sequence moves
+Jam-23 (Medium-Hard)
+Cars: 10 total
+Red Car: Position (3,2), Horizontal, Length 2
+Other Cars: 9 cars with focused barriers
+Complexity: Medium-Hard - middle position creates challenges
+Jam-24 (Medium-Hard)
+Cars: 10 total
+Red Car: Position (2,2), Horizontal, Length 2
+Other Cars: 9 cars with strategic blocking
+Complexity: Medium-Hard - central positioning
+Jam-25 (Very Hard)
+Cars: 13 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 12 cars with maximum density
+Complexity: Very Hard - high car count with complex patterns
+Jam-26 (Hard)
+Cars: 12 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 11 cars with interlocking formation
+Complexity: Hard - requires precise move sequencing
+Jam-27 (Medium-Hard)
+Cars: 10 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 9 cars with corner emphasis
+Complexity: Medium-Hard - edge positioning with barriers
+Jam-28 (Hard)
+Cars: 12 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 11 cars with complex grid coverage
+Complexity: Hard - extensive blocking patterns
+Jam-29 (Hard)
+Cars: 12 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 11 cars with layered defense
+Complexity: Hard - multiple clearing stages required
+Jam-30 (Medium-Hard)
+Cars: 10 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 9 cars with strategic positioning
+Complexity: Medium-Hard - balanced challenge
+Jam-31 (Hard)
+Cars: 11 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 10 cars with vertical emphasis
+Complexity: Hard - tall barriers require careful planning
+Jam-32 (Hard)
+Cars: 11 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 10 cars with corner formations
+Complexity: Hard - edge position with internal barriers
+Jam-33 (Hard)
+Cars: 12 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 11 cars with maximum blocking
+Complexity: Hard - requires extensive move sequences
+Jam-34 (Hard)
+Cars: 12 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 11 cars with strategic coverage
+Complexity: Hard - complex unlocking required
+Jam-35 (Hard)
+Cars: 11 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 10 cars with focused blocking
+Complexity: Hard - requires sequential clearing
+Jam-36 (Hard)
+Cars: 12 total
+Red Car: Position (2,2), Horizontal, Length 2
+Other Cars: 11 cars with central barriers
+Complexity: Hard - middle position increases difficulty
+Jam-37 (Very Hard)
+Cars: 13 total
+Red Car: Position (1,2), Horizontal, Length 2
+Other Cars: 12 cars with maximum complexity
+Complexity: Very Hard - high density with strategic blocking
+Jam-38 (Hard)
+Cars: 11 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 10 cars with layered defense
+Complexity: Hard - requires multiple clearing phases
+Jam-39 (Hard)
+Cars: 12 total
+Red Car: Position (0,2), Horizontal, Length 2
+Other Cars: 11 cars with extensive coverage
+Complexity: Hard - complex move sequences needed
+Jam-40 (Very Hard)
+Cars: 13 total
+Red Car: Position (3,2), Horizontal, Length 2
+Other Cars: 12 cars with maximum density
+Complexity: Very Hard - central position + high car count

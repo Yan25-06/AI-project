@@ -62,9 +62,7 @@ def read_testcases(filename):
 
     return testcases
 
-testcases = read_testcases("./src/test/final_testcase.txt")
-test5 = read_testcases("./src/test/test5.txt")
-def make_data(algorithm, test_index):
+def make_data(algorithm, testcases, test_index):
     _, _, solver = test_func(algorithm, testcases[test_index])
     last_board = solver.solution[-1]
     new_boards = []
@@ -77,32 +75,19 @@ def make_data(algorithm, test_index):
     solver.solution += new_boards
     with open(f"src/GUI/Solution/{algorithm}/MAP_{test_index + 1}.pkl", "wb") as f:
         pickle.dump(solver.solution, f)
-    
-al = ["UCS"]
-for a in al:
-    for j in range(20):
-        make_data(a, j)
-# tests = parse_test_cases("./src/test/jams.txt")
+
+# read final_testcase
+testcases = read_testcases("./src/test/final_testcase.txt")
+
+# -----------make data for GUI-----------
+# al = ["Astar", "DFS", "BFS" "UCS"]
+# for a in al:
+#     for j in range(20):
+#         make_data(a, j, testcases)
+
+# -----------write time, memory,... to csv file-----------
 # test("Astar", testcases)
 # test("UCS", testcases)
-# test("BFS", tests)
-test("DFS", testcases)
-# solver_name = "Astar"
-# test_num = 0
-# sec, mem, solver = test_func(solver_name, test_cases[test_num])
-# print(sec)
-# print(mem)
-# print(solver.get_moves())
-# print(solver.get_expanded_nodes())
-# results = []
-# results.append([test_num + 1, solver_name, sec, mem, solver.get_moves(), solver.get_expanded_nodes()])
-# with open(f"{solver_name}_results.csv", "a", newline="") as f:
-#         writer = csv.writer(f)
-#         writer.writerows(results)
-# if not solver.solution:
-#     print("no")
-# else:
-#     print("Solution:")
-#     for step in solver.get_solution():
-#         step.print()
-#         print('---')
+# test("BFS", testcases)
+# test("DFS", testcases)
+

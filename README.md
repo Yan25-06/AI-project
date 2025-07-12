@@ -1,12 +1,8 @@
-# Cách chạy 
+run-gui:
+	python -m streamlit run src/GUI/main.py
 
-- Nhớ kích hoạt virtual environment
-- Ở root directory, chạy: 
-	`python3 -m src.main`  
+run_test: 
+	python -m src.test.test
 
-
-**Lưu ý**  
-
-- Sau khi thêm thư viện mới (bằng pip install)
-- Chạy lệnh sau để lưu thông tin các thư viện: 
-	`pip freeze --local > requirements.txt`
+install: 
+	pip install -r requirements.txt

@@ -1,6 +1,6 @@
 from .solver_base import Solver, Node
 from ..game.game import Board
-#from heapdict import heapdict
+from heapdict import heapdict
 class AstarSolver(Solver):
     def _calc_up_down_block_car(self, target_car, board):
         up, down = 0, 0
