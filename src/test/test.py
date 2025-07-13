@@ -26,9 +26,8 @@ def test_func(solver_name, test_case):
 
 def test(solver_name, test_cases):
     results = []
-    print(solver_name)
     for idx, test_case in enumerate(test_cases):
-        print(f"test{idx}")
+        print(f"Test {idx + 1}")
         elapsed_sec, peak_memory, solver = test_func(solver_name, test_case)
         # no solution thi moves = -1 
         results.append([idx + 1, solver_name, elapsed_sec, peak_memory,len(test_case), solver.get_moves(), solver.get_expanded_nodes()])
@@ -75,19 +74,4 @@ def make_data(algorithm, testcases, test_index):
     solver.solution += new_boards
     with open(f"src/GUI/Solution/{algorithm}/MAP_{test_index + 1}.pkl", "wb") as f:
         pickle.dump(solver.solution, f)
-
-# read final_testcase
-testcases = read_testcases("./src/test/final_testcase.txt")
-
-# -----------make data for GUI-----------
-# al = ["Astar", "DFS", "BFS" "UCS"]
-# for a in al:
-#     for j in range(20):
-#         make_data(a, j, testcases)
-
-# -----------write time, memory,... to csv file-----------
-# test("Astar", testcases)
-# test("UCS", testcases)
-# test("BFS", testcases)
-# test("DFS", testcases)
 

@@ -98,3 +98,37 @@ def draw_map(board):
 
         # BGR -> RGB để Streamlit hiển thị đúng màu
         st.image(cv2.cvtColor(bg, cv2.COLOR_BGR2RGB))
+
+# -----older version of draw_map-----
+# def draw_map(board):
+#     col1, col2, col3 = st.columns([1, 6, 1])
+#     with col2:
+#         size = board.size
+#         fig, ax = plt.subplots(figsize=(size + 4, size))
+#         ax.set_xlim(0, size + 4)
+#         ax.set_ylim(size, 0)
+#         ax.set_aspect('equal')
+#         ax.axis('off')
+
+#         # Vẽ nền
+#         bg_img = mpimg.imread(f"src/GUI/assets/Background.png")
+#         ax.imshow(bg_img, extent=(0, size + 4, 0, size), zorder=0)
+#         # Vẽ xe
+#         for name, car in board.cars.items():
+#             x = car.x
+#             y = car.y 
+#             dx = car.length if car.dir == 'H' else 1
+#             dy = car.length if car.dir == 'V' else 1
+
+#             try:
+#                 if car.name == 'R':
+#                     img = mpimg.imread(f"src/GUI/assets/R.png")
+#                 else:
+#                     img = mpimg.imread(f"src/GUI/assets/{car.length}3.png")
+#                 if car.dir == 'H':
+#                     img = np.rot90(img, k=3)
+#                 ax.imshow(img, extent=(x, x+dx, y, y+dy), zorder=1)
+#             except FileNotFoundError:
+#                 ax.add_patch(plt.Rectangle((x, y), dx, dy, color="gray"))
+#                 ax.text(x + dx/2, y + dy/2, name, ha='center', va='center')
+#         st.pyplot(fig)

@@ -9,7 +9,7 @@ run-gui:
 	or
 	python3 -m streamlit run src/GUI/main.py
 
-run_test: 
-	python -m src.test.test
+run_main: 
+	python -m src.main
 	or
-	python3 -m src.test.test
+	python3 -m src.main
